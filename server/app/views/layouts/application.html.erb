@@ -11,5 +11,22 @@
 
   <body>
     <%= yield %>
+  <table>
+    <tr>
+      <th>student_id</th><th>yyyy_mm_dd_hh</th><th>per1</th><th>per2</th><th>per3</th><th>per4</th><th>per5</th><th>year</th><th>month</th>
+    </tr>
+    <% @data.each do |obj| %>
+    <tr>
+      <td><%= obj.student_id %></td>
+      <td><%= obj.yyyy_mm_dd_hh %></td>
+      <td><%= obj.period1 %></td>
+      <td><%= obj.period2 %></td>
+      <td><%= obj.period3 %></td>
+      <td><%= obj.period4 %></td>
+      <td><%= obj.period5 %></td>
+      <td><%= obj.year %></td>
+      <td><%= obj.month %></td>
+    </tr>
+  </table>
   </body>
 </html>
