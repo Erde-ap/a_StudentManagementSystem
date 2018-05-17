@@ -1,13 +1,15 @@
 import React from 'react';
 
-const StudentView = ({student}) => (
-    <ul className='flex'>
-        {
-            student.map(student => (
-                <li key={student.number}>{student.number} | {student.name}</li>
+const StudentView = ({students}) => (
+        <ul>
+            {
+                students.map(student => (
+                <li key={student.id}>{student.student_id}{student.yyyy_mm_dd_hh
+                }</li>
             ))
-        }
-    </ul>
-);
+            }
+        </ul>
+
+    );
 
 export default StudentView;

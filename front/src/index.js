@@ -13,10 +13,15 @@ let store = createStore(
     applyMiddleware(thunk)
 );
 
+store.subscribe(() =>
+    console.log(store.getState())
+);
+
 render(
     <Provider store={store}>
         <App/>
     </Provider>,
     document.getElementById('root')
 );
+
 store.dispatch(StudentData.getStudentData);
