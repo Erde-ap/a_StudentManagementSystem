@@ -62,9 +62,8 @@ ActiveRecord::Schema.define(version: 2018_05_17_051258) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: false, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.integer "student_id", null: false
-    t.integer "INTEGER PRIMARY KEY AUTO_INCREMENT"
     t.integer "attendance_id", null: false
     t.string "password", null: false
     t.string "name"
