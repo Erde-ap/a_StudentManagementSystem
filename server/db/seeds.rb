@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #User作成(先頭のみわかりやすく改行)
+# 2回目以降rails db:seedを行う場合は先にrails db:migrate:resetを行うこと
 User.create(
     student_id:1196499,
     attendance_id:1,
@@ -30,8 +31,8 @@ User.create(student_id:1196510, attendance_id:12, password:'Tu5aBVRi', name:'竹
 User.create(student_id:1196511, attendance_id:13, password:'dL24hCcJ', name:'徳田敏宏', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196512, attendance_id:14, password:'uX2H6get', name:'富永康子', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196513, attendance_id:15, password:'iD6AUz2X', name:'藤村千代', grade:4, classes:1, permission:0, state:false)
-User.create(student_id:0000001, attendance_id:0, password:'r8FPkwev', name:'岡晋一', grade:0, classes:0, permission:2, state:false)
-User.create(student_id:0100001, attendance_id:0, password:'Pkgkme7e', name:'江口良一', grade:0, classes:0, permission:2, state:false)
+User.create(student_id:0000001, attendance_id:0, password:'r8FPkwev', name:'岡晋一', grade:0, classes:1, permission:2, state:false)
+User.create(student_id:0100001, attendance_id:0, password:'Pkgkme7e', name:'江口良一', grade:0, classes:1, permission:2, state:false)
 
 #request作成(先頭のみわかりやすく改行)
 Request.create(
