@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_17_051258) do
+ActiveRecord::Schema.define(version: 2018_05_18_003850) do
 
-  create_table "Attendances", force: :cascade do |t|
+  create_table "attendances", force: :cascade do |t|
     t.integer "student_id"
-    t.string "yyyy_mm_dd_hh"
+    t.string "yyyy_mm_dd_hh_mm"
     t.integer "period1", default: 2, null: false
     t.integer "period2", default: 2, null: false
     t.integer "period3", default: 2, null: false
