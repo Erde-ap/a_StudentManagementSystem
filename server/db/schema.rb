@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_003850) do
+ActiveRecord::Schema.define(version: 2018_05_18_042650) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "student_id"
-    t.string "yyyy_mm_dd_hh_mm"
     t.integer "period1", default: 2, null: false
     t.integer "period2", default: 2, null: false
     t.integer "period3", default: 2, null: false
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_003850) do
     t.datetime "updated_at", null: false
     t.integer "year"
     t.integer "month"
+    t.integer "day"
     t.index ["student_id"], name: "index_attendances_on_student_id"
   end
 
