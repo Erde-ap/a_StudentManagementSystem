@@ -28,15 +28,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application_controller.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="52" selection-start-column="52" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="teacherview_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/teacherview_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -58,8 +49,8 @@
       <file leaf-file-name="20180518042650_change_to_attendance5.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20180518042650_change_to_attendance5.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="45">
+              <caret line="3" column="43" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -95,16 +86,25 @@
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="282">
-              <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
+              <caret line="71" column="155" selection-start-line="71" selection-start-column="155" selection-end-line="71" selection-end-column="155" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20180508052028_change_culumn_requests.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20180508052028_change_culumn_requests.rb">
+      <file leaf-file-name="20180518045002_change_to_attendance6.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20180518045002_change_to_attendance6.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="45" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="45" />
+              <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20180508004459_create_attendances.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20180508004459_create_attendances.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -133,6 +133,7 @@
         <option value="$PROJECT_DIR$/db/migrate/20180518003850_change_attendance3.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20180518042650_change_to_attendance5.rb" />
         <option value="$PROJECT_DIR$/app/controllers/userattendance_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20180518045002_change_to_attendance6.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
       </list>
     </option>
@@ -334,12 +335,12 @@
       <workItem from="1526516847645" duration="1163000" />
       <workItem from="1526518401517" duration="13618000" />
       <workItem from="1526603958552" duration="1755000" />
-      <workItem from="1526616883211" duration="1666000" />
+      <workItem from="1526616883211" duration="2615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27146000" />
+    <option name="totallyTimeSpent" value="28095000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1537" height="912" extended-state="6" />
@@ -646,13 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20180518042650_change_to_attendance5.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/userattendance_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -660,10 +654,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180518042650_change_to_attendance5.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="43" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180508004459_create_attendances.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20180518045002_change_to_attendance6.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
-          <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
+          <caret line="71" column="155" selection-start-line="71" selection-start-column="155" selection-end-line="71" selection-end-column="155" />
         </state>
       </provider>
     </entry>
