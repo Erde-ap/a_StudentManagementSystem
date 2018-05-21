@@ -69,7 +69,28 @@ const StudentView = ({student}) => (
                     </thead>
                     <tbody>
                     {
-                        student.map((student,i) => (
+                        student.slice(0,15).map((student,i) => (
+                            <DayTable key={i} dayData={student}/>
+                        ))
+                    }
+                    </tbody>
+                </Table>
+            </Col>
+            <Col lg={{size:5}}>
+                <Table  className="table-bordered ">
+                    <thead>
+                    <tr>
+                        <th colSpan={2}>日付</th>
+                        <th>1限</th>
+                        <th>2限</th>
+                        <th>3限</th>
+                        <th>4限</th>
+                        <th>5限</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        student.slice(16,31).map((student,i) => (
                             <DayTable key={i} dayData={student}/>
                         ))
                     }
