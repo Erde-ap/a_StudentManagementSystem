@@ -2,10 +2,8 @@ import {connect} from 'react-redux';
 import StudentView from '../components/StudentView';
 
 
-
-
 const mapStateToProps = state => ({
-        students : state.student
+        student : state.student
     });
 
 // const mapDispatchToProps = (dispatch) => {
@@ -16,9 +14,9 @@ const mapStateToProps = state => ({
 //   };
 // };
 
-const Students = connect(
+const Student = connect(
     mapStateToProps
     // mapDispatchToProps
 )(StudentView);
 
-export default Students;
+export default Student;

@@ -1,9 +1,9 @@
 import React from 'react';
-import Students from '../container/Students'
+import Student from '../container/Student'
 
 const App = () => (
     <React.Fragment>
-        <Students />
+        <Student />
     </React.Fragment>
 );
 
