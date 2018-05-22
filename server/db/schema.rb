@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_045002) do
+ActiveRecord::Schema.define(version: 2018_05_22_003812) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "student_id"
-    t.integer "period1", default: 2, null: false
-    t.integer "period2", default: 2, null: false
-    t.integer "period3", default: 2, null: false
-    t.integer "period4", default: 2, null: false
-    t.integer "period5", default: 2, null: false
+    t.integer "period1", default: 9, null: false
+    t.integer "period2", default: 9, null: false
+    t.integer "period3", default: 9, null: false
+    t.integer "period4", default: 9, null: false
+    t.integer "period5", default: 9, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "year"
