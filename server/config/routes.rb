@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get '/test',to: 'userattendance#find'
   get '/rate',to: 'userattendance#rate'
   get '/login', to: 'login#login'
-
+  get '/showlist',to: 'teacherview#showtime'
 
 end
