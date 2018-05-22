@@ -6,7 +6,7 @@ import Header from './Header'
 const StudentView = ({student}) => (
     <Container>
         <Header />
-        <Row>
+        <Row className="mt-80">
             <Col lg={12}><h3>飯塚大地さんの出席状況</h3></Col>
             <Col lg={12}>
                 <table className="table table-bordered">
@@ -45,7 +45,7 @@ const StudentView = ({student}) => (
                 </table>
             </Col>
         </Row>
-        <Row>
+        <Row className="mt-30">
             <Col lg={{size:2}}><h3>{student[0].month}月</h3></Col>
             <Col lg={{size:1, offset:2}}>
                 <button type="button" className="btn-primary btn-lg">＜</button>
@@ -54,7 +54,7 @@ const StudentView = ({student}) => (
                 <button type="button" className="btn-primary btn-lg">＞</button>
             </Col>
         </Row>
-        <Row>
+        <Row className="mt-30">
             <Col lg={{size:5}}>
                 <Table  className="table-bordered ">
                     <thead>
@@ -90,7 +90,7 @@ const StudentView = ({student}) => (
                     </thead>
                     <tbody>
                     {
-                        student.slice(16,31).map((student,i) => (
+                        student.slice(15,31).map((student,i) => (
                             <DayTable key={i} dayData={student}/>
                         ))
                     }
