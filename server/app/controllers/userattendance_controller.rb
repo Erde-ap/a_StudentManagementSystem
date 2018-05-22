@@ -1,5 +1,7 @@
 class UserattendanceController < ApplicationController
   def find
+    @studentId = params[:student_id]
+    @month = params[:month]
     # if request.post? then
       result = Attendance.where(student_id: @studentId).where(month: @month)
       @studentId = result.all
@@ -11,49 +13,45 @@ class UserattendanceController < ApplicationController
 
   def rate
     #データを受け取れる場合は以下２つの前の数字を消してコメントアウトしているparms[]を有効に
-    @studentId = 1196500#params[:student_id]
+    @studentId = params[:student_id]
     #なんかいい感じに計算
     for @month in 1..12
-
-
-    @a0 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 0).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 0).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 0).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 0).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 0).count
-    @a1 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 1).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 1).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 1).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 1).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 1).count
-    @a2 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 2).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 2).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 2).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 2).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 2).count
-    @a3 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 3).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 3).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 3).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 3).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 3).count
-    @a4 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 4).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 4).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 4).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 4).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 4).count
-    @a5 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 5).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 5).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 5).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 5).count
-    + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 5).count
-
-
-    @a012345 = @a0 + @a1 + @a2 + @a3 + @a4 + @a5
-    @a14 = @a1 + @a4
-    @a2_3 = @a2 / 3
-    @a1a2_3a4 = @a14 + @a2_3
-    @a012345_m_a1a2_3a4 = @a012345 - @a1a2_3a4
-    @last = @a012345_m_a1a2_3a4 / @a012345.to_f * 100
+      @a0 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 0).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 0).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 0).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 0).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 0).count
+      @a1 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 1).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 1).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 1).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 1).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 1).count
+      @a2 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 2).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 2).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 2).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 2).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 2).count
+      @a3 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 3).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 3).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 3).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 3).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 3).count
+      @a4 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 4).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 4).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 4).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 4).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 4).count
+      @a5 = Attendance.where(student_id: @studentId).where(month: @month).where(period1: 5).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period2: 5).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 5).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 5).count
+      + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 5).count
+      @a012345 = @a0 + @a1 + @a2 + @a3 + @a4 + @a5
+      @a14 = @a1 + @a4
+      @a2_3 = @a2 / 3
+      @a1a2_3a4 = @a14 + @a2_3
+      @a012345_m_a1a2_3a4 = @a012345 - @a1a2_3a4
+      @last = @a012345_m_a1a2_3a4 / @a012345.to_f * 100
       if @month == 1
         @last1 = @last
       elsif @month == 2
