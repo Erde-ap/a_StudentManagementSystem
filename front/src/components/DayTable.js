@@ -11,11 +11,11 @@ class DayTable extends Component{
                 <tr key={dayData.id}>
                     <td>{dayData.day}</td>
                     <td>{StudentData.getDayOfTheWeek(dayData.year,dayData.month,dayData.day)}</td>
-                    <td className={gridStyle(dayData.period1)}>{dayData.period1}</td>
-                    <td className={gridStyle(dayData.period2)}>{dayData.period2}</td>
-                    <td className={gridStyle(dayData.period3)}>{dayData.period3}</td>
-                    <td className={gridStyle(dayData.period4)}>{dayData.period4}</td>
-                    <td className={gridStyle(dayData.period5)}>{dayData.period5}</td>
+                    {gridStyle(dayData.period1)}
+                    {gridStyle(dayData.period2)}
+                    {gridStyle(dayData.period3)}
+                    {gridStyle(dayData.period4)}
+                    {gridStyle(dayData.period5)}
                 </tr>
         )
     }
@@ -23,13 +23,13 @@ class DayTable extends Component{
 
 function gridStyle(grid) {
     switch (grid){
-        case 1 : return "table-warning"
-        case 2 : return "table-danger"
-        case 3 : return "table-info"
-        case 4 : return "table-success"
-        case 5 : return "table-primary"
-        case 6 : return "holidays"
-        default : return null
+        case 1 : return <td className="table-warning">{grid}</td>
+        case 2 : return <td className="table-danger">{grid}</td>
+        case 3 : return <td className="table-info">{grid}</td>
+        case 4 : return <td className="table-success">{grid}</td>
+        case 5 : return <td className="table-primary">{grid}</td>
+        case 9 : return <td className="none"></td>
+        default : return <td>{grid}</td>
     }
 }
 

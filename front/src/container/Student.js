@@ -1,22 +1,21 @@
 import {connect} from 'react-redux';
+import {onNextTodo} from "../actions";
 import StudentView from '../components/StudentView';
 
 
 const mapStateToProps = state => ({
-        student : state.student
+        student : state.student.month,
+        studentYear : state.student.year
     });
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onTodoClick: id => {
-//       dispatch(toggleTodo(id));
-//     }
-//   };
-// };
+const mapDispatchToProps = dispatch => ({
+      onNextClick : month => {
+      dispatch(onNextTodo(month));
+    }});
 
 const Student = connect(
-    mapStateToProps
-    // mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(StudentView);
 
 export default Student;

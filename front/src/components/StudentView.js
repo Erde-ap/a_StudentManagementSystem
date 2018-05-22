@@ -3,7 +3,7 @@ import {Container, Row, Col, Table} from 'reactstrap'
 import DayTable from './DayTable'
 import Header from './Header'
 
-const StudentView = ({student}) => (
+const StudentView = ({student,studentYear}) => (
     <Container>
         <Header />
         <Row className="mt-80">
@@ -28,18 +28,11 @@ const StudentView = ({student}) => (
                     </thead>
                     <tbody>
                     <tr>
-                    <td className="table-danger">50</td>
-                    <td className="table-danger">60</td>
-                    <td className="table-danger">70</td>
-                    <td className="table-danger">80</td>
-                    <td>90</td>
-                    <td>90</td>
-                    <td>90</td>
-                    <td>90</td>
-                    <td>90</td>
-                    <td>90</td>
-                    <td>90</td>
-                    <td>90</td>
+                        {
+                            studentYear.map((value,i) => (
+                                value.num > 80 ? <td key={i}>{value.num}</td> : <td className="table-danger" key={i}>{value.num}</td>
+                            ))
+                        }
                     </tr>
                     </tbody>
                 </table>

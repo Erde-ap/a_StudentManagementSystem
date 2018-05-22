@@ -9,6 +9,11 @@
 //         students
 //     };
 // }
+export const onNextTodo = month => ({
+    type: 'ON_NEXT_TODO',
+    month
+})
+
 export const launchState = json => ({
     type: 'LAUNCH',
     json
