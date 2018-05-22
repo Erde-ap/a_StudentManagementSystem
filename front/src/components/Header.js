@@ -1,19 +1,10 @@
 import React, {Component} from 'react';
-import {Button} from 'reactstrap';
-import {Container, Row, Col, Navbar, Nav, NavItem, NavbarBrand} from 'reactstrap'
-import {
-    Collapse,
-    NavbarToggler,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+import {Nav, Navbar, NavbarBrand, NavItem, NavLink} from 'reactstrap';
 import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
-class Header extends Component{
-    render(){
-        return(
+class Header extends Component {
+    render() {
+        return (
             <Navbar color="info" light expand="md" fixed="top">
                 <NavbarBrand href="/">KOBEDENSHI</NavbarBrand>
                 <Nav className="ml-1" navbar>

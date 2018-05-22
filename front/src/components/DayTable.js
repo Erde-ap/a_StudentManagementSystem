@@ -1,58 +1,35 @@
 import React, {Component} from 'react';
 import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
+import StudentData from '../models/StudentData'
+
 class DayTable extends Component{
     render(){
-        const day = this.props.dayData.day
-        const dow = this.props.dayData.dow
-        const grid1 = this.props.dayData.period1
-        const grid2 = this.props.dayData.period2
-        const grid3 = this.props.dayData.period3
-        const grid4 = this.props.dayData.period4
-        const grid5 = this.props.dayData.period5
+        const dayData = this.props.dayData
 
         return(
-                <tbody>
-                <tr>
-                    <td>{day}</td>
-                    <td>{dow}</td>
-                    { grid1 == 0 ? <td>{grid1}</td> : null}
-                    { grid1 == 1 ? <td class="table-warning">{grid1}</td> : null}
-                    { grid1 == 2 ? <td class="table-danger">{grid1}</td> : null}
-                    { grid1 == 3 ? <td class="table-info">{grid1}</td> : null}
-                    { grid1 == 4 ? <td class="table-success">{grid1}</td> : null}
-                    { grid1 == 5 ? <td class="table-primary">{grid1}</td> : null}
-
-                    { grid2 == 0 ? <td>{grid2}</td> : null}
-                    { grid2 == 1 ? <td class="table-warning">{grid2}</td> : null}
-                    { grid2 == 2 ? <td class="table-danger">{grid2}</td> : null}
-                    { grid2 == 3 ? <td class="table-info">{grid2}</td> : null}
-                    { grid2 == 4 ? <td class="table-success">{grid2}</td> : null}
-                    { grid2 == 5 ? <td class="table-primary">{grid2}</td> : null}
-
-                    { grid3 == 0 ? <td>{grid3}</td> : null}
-                    { grid3 == 1 ? <td class="table-warning">{grid3}</td> : null}
-                    { grid3 == 2 ? <td class="table-danger">{grid3}</td> : null}
-                    { grid3 == 3 ? <td class="table-info">{grid3}</td> : null}
-                    { grid3 == 4 ? <td class="table-success">{grid3}</td> : null}
-                    { grid3 == 5 ? <td class="table-primary">{grid3}</td> : null}
-
-                    { grid4 == 0 ? <td>{grid4}</td> : null}
-                    { grid4 == 1 ? <td class="table-warning">{grid4}</td> : null}
-                    { grid4 == 2 ? <td class="table-danger">{grid4}</td> : null}
-                    { grid4 == 3 ? <td class="table-info">{grid4}</td> : null}
-                    { grid4 == 4 ? <td class="table-success">{grid4}</td> : null}
-                    { grid4 == 5 ? <td class="table-primary">{grid4}</td> : null}
-
-                    { grid5 == 0 ? <td>{grid5}</td> : null}
-                    { grid5 == 1 ? <td class="table-warning">{grid5}</td> : null}
-                    { grid5 == 2 ? <td class="table-danger">{grid5}</td> : null}
-                    { grid5 == 3 ? <td class="table-info">{grid5}</td> : null}
-                    { grid5 == 4 ? <td class="table-success">{grid5}</td> : null}
-                    { grid5 == 5 ? <td class="table-primary">{grid5}</td> : null}
+                <tr key={dayData.id}>
+                    <td>{dayData.day}</td>
+                    <td>{StudentData.getDayOfTheWeek(dayData.year,dayData.month,dayData.day)}</td>
+                    <td className={gridStyle(dayData.period1)}>{dayData.period1}</td>
+                    <td className={gridStyle(dayData.period2)}>{dayData.period2}</td>
+                    <td className={gridStyle(dayData.period3)}>{dayData.period3}</td>
+                    <td className={gridStyle(dayData.period4)}>{dayData.period4}</td>
+                    <td className={gridStyle(dayData.period5)}>{dayData.period5}</td>
                 </tr>
-                </tbody>
         )
+    }
+}
+
+function gridStyle(grid) {
+    switch (grid){
+        case 1 : return "table-warning"
+        case 2 : return "table-danger"
+        case 3 : return "table-info"
+        case 4 : return "table-success"
+        case 5 : return "table-primary"
+        case 6 : return "holidays"
+        default : return null
     }
 }
 
