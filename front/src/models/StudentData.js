@@ -8,7 +8,7 @@ class StudentData {
         const result2 = await fetchResult.json();
         const result3 = [];
         for( let key in result2){
-            var n = {num:result2[key]}
+            let n = {num:result2[key]}
             result3.push( n )
         }
 
@@ -18,9 +18,9 @@ class StudentData {
     }
 
     static getDayOfTheWeek(year, month, day) {
-        var d = new Date(year, month - 1, day);
-        var dayNames = '日月火水木金土';
-        var Dotw = dayNames[d.getDay()];
+        let d = new Date(year, month - 1, day);
+        let dayNames = '日月火水木金土';
+        let Dotw = dayNames[d.getDay()];
         return Dotw
 
     }
