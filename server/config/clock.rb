@@ -37,60 +37,91 @@ every(1.second, 'period1.job') do   #1秒ごとにCSV更新時間を確認し更
                user.state = true                                                          #退室が登録されていれば入室に
                user.save!
                   attendance = Attendance.find_by(student_id: row[5], year: row[0], month: row[1], day: row[2])#今日の日付の学籍番号のテーブルをセレクト
+p "入室"
+p "変更前------------------------------------------------------------------------------------------------------------------------------------------------"
+p attendance.period1
+p attendance.period2
+p attendance.period3
+p attendance.period4
+p attendance.period5
+p "------------------------------------------------------------------------------------------------------------------------------------------------------------"
                   #出席
                   #8時から9時20分、10時10分から10時20分、11時10分から11時20分、12時10分から13時、13時50分から14時は出席を登録
                   if ("08:00:00").to_time <= csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time < ("09:20:00").to_time
+                     p "1"
                      attendance.period1 = 0
                      attendance.save!
                   elsif ("10:10:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time < ("10:20:00").to_time
+                     p "2"
                      attendance.period2 = 0
                      attendance.save!
                   elsif ("11:10:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time < ("11:20:00").to_time
+                     p "3"
                      attendance.period3 = 0
                      attendance.save!
                   elsif ("12:10:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time < ("13:00:00").to_time
+                                       p "4"
                      attendance.period4 = 0
                      attendance.save!
                   elsif ("13:50:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time < ("14:00:00").to_time
+                                       p "5"
                      attendance.period5 = 0
                      attendance.save!
                   #遅刻
                   #9時20分から9時35分、10時20分から10時35分、11時20分から11時35分、13時から13時15分、14時から14時15分は出席を登録
                   elsif ("9:20:00").to_time <= csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("9:35:00").to_time
+                                       p "6"
                      attendance.period1 = 1
                      attendance.save!
                   elsif ("10:20:00").to_time <= csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("10:35:00").to_time
+                                       p "7"
                      attendance.period2 = 1
                      attendance.save!
                   elsif ("11:20:00").to_time <= csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("11:35:00").to_time
+                                       p "8"
                      attendance.period3 = 1
                      attendance.save!
                   elsif ("13:00:00").to_time <= csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("13:15:00").to_time
+                                       p "9"
                      attendance.period4 = 1
                      attendance.save!
                   elsif ("14:00:00").to_time <= csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("14:15:00").to_time
+                                       p "10"
                      attendance.period5 = 1
                      attendance.save!
                   #欠席
                   #9時35分から10時10分、10時20分から10時35分、11時20分から11時35分、13時から13時15分、14時から14時15分は出席を登録
                   elsif ("09:35:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("10:10:00").to_time
+                                       p "11"
                      attendance.period1 = 2
                      attendance.save!
                   elsif ("10:35:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("11:10:00").to_time
+                                       p "12"
                      attendance.period2 = 2
                      attendance.save!
                   elsif ("11:35:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("12:10:00").to_time
+                                       p "13"
                      attendance.period3 = 2
                      attendance.save!
                   elsif ("13:15:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("13:50:00").to_time
+                                       p "14"
                      attendance.period4 = 2
                      attendance.save!
                   elsif ("14:15:00").to_time < csv2.strftime("%H:%M:%S") && csv2.strftime("%H:%M:%S").to_time <= ("14:50:00").to_time
+                                       p "15"
                      attendance.period5 = 2
                      attendance.save!
                   end
+p "変更後------------------------------------------------------------------------------------------------------------------------------------------------"
+p attendance.period1
+p attendance.period2
+p attendance.period3
+p attendance.period4
+p attendance.period5
+p "------------------------------------------------------------------------------------------------------------------------------------------------------------"
                   
             else
+p "退室"
                user.state = false   #入室中であれば退室
                user.save!
             end
