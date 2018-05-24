@@ -17,9 +17,9 @@ date = ""
 number = 1
 
 every(1.second, 'period1.job') do
-   CSV.foreach("/home/ec2-user/environment/CSV/student.csv", headers: true) do |row|
+   CSV.foreach("/home/jaguar/Student.csv", headers: true) do |row|
       #ファイル更新時間更新
-      file = File::stat("/home/ec2-user/environment/CSV/student.csv")
+      file = File::stat("/home/jaguar/Student.csv")
       csv2 = file.mtime
       
       #ファイル更新確認
