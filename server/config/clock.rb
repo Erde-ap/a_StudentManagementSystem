@@ -175,19 +175,18 @@ every(1.day, 'period6.job', at: '15:00') do
       user.state = false
       user.save!
    end
-      attendance = Attendance.find_by(student_id: user.student_id, year: time.strftime("%Y"), month: time.strftime("%m"), day: time.strftime("%d"))
-   if attendance.period1 == 9
-      attendance.period1 = 0
-   elsif attendance.period2 == 9
-      attendance.period2 = 0
-   elsif attendance.period3 == 9
-      attendance.period3 = 0
-   elsif attendance.period4 == 9
-      attendance.period4 = 0
-   elsif attendance.period5 == 9
-      attendance.period5 = 0
-   end
-      attendance.save!
+   attendance = Attendance.find_by(student_id: user.student_id, year: time.strftime("%Y"), month: time.strftime("%m"), day: time.strftime("%d"))
+      if attendance.period1 == 9
+         attendance.period1 = 0
+      elsif attendance.period2 == 9
+         attendance.period2 = 0
+      elsif attendance.period3 == 9
+         attendance.period3 = 0
+      elsif attendance.period4 == 9
+         attendance.period4 = 0
+      elsif attendance.period5 == 9
+         attendance.period5 = 0
+      end
+         attendance.save!
    end
 end
-
