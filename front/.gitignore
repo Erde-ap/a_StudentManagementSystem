@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+#JetBrainsのファイルは無視
 .idea/
 # production
 /build
