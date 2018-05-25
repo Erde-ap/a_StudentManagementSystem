@@ -11,7 +11,6 @@ class StudentData {
             let n = {num:result2[key]}
             result3.push( n )
         }
-
         result.year = await result3;
         result.month = await result1.json();
         dispatch(launchState(result))
