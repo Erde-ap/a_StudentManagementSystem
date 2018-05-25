@@ -28,8 +28,7 @@ function gridStyle(grid) {
         case 3 : return <td className="table-info">{grid}</td>
         case 4 : return <td className="table-success">{grid}</td>
         case 5 : return <td className="table-primary">{grid}</td>
-        //case 9 : return <td className="none"></td>
-        case 9 : return <td className="table-secondary"></td>
+        case 9 : return <td className="none"></td>
         default : return <td>{grid}</td>
     }
 }
