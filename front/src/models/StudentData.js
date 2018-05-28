@@ -8,7 +8,7 @@ class StudentData {
         const result2 = await fetchResult.json();
         const result3 = [];
         for( let key in result2){
-            let n = {num:result2[key]}
+            let n = {num:result2[key]};
             result3.push( n )
         }
         result.year = await result3;

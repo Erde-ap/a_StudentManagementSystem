@@ -1,23 +1,25 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavbarBrand, NavItem, NavLink} from 'reactstrap';
 import "../../node_modules/bootstrap/dist/css/bootstrap.css"
+import {Link} from "react-router-dom";
+
 
 class Header extends Component {
     render() {
         return (
             <Navbar color="info" light expand="md" fixed="top">
-                <NavbarBrand href="/">KOBEDENSHI</NavbarBrand>
+                <NavbarBrand>KOBEDENSHI</NavbarBrand>
                 <Nav className="ml-1" navbar>
                     <NavItem>
-                        ホーム
+                        <NavLink><Link to="/">ホーム</Link></NavLink>
                     </NavItem>
                 </Nav>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <NavLink href="https://github.com/reactstrap/reactstrap">ログアウト</NavLink>
+                        <NavLink><Link to="student">生徒画面</Link></NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="https://github.com/reactstrap/reactstrap">パスワード変更</NavLink>
+                        <NavLink><Link to="change">変更届け</Link></NavLink>
                     </NavItem>
                 </Nav>
             </Navbar>

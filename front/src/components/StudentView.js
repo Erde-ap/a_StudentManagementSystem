@@ -1,11 +1,9 @@
 import React from 'react'
 import {Container, Row, Col, Table} from 'reactstrap'
 import DayTable from './DayTable'
-import Header from './Header'
 
 const StudentView = ({student,studentYear}) => (
     <Container>
-        <Header />
         <Row className="mt-80">
             <Col lg={12}><h3>飯塚大地さんの出席状況</h3></Col>
             <Col lg={12}>

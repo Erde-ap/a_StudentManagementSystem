@@ -9,7 +9,7 @@ class SendChange extends Component{
                 <Header/>
                 <Row className="mt-80">
                     <Col lg={{size:4,offset:4}}>
-                        <h1 class="text-center">出席状況の変更</h1>
+                        <h1 className="text-center">出席状況の変更</h1>
                     </Col>
                 </Row>
                 <Form>
