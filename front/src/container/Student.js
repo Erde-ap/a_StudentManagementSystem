@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {onNextTodo} from "../actions";
+import {onNextMonth} from "../actions";
 import StudentView from '../components/StudentView';
 
 
@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
     });
 
 const mapDispatchToProps = dispatch => ({
-      onNextClick : month => {
-      dispatch(onNextTodo(month));
+        onNextMonth : month => {
+      dispatch(onNextMonth(month));
     }});
 
 const Student = connect(
