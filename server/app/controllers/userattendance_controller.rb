@@ -3,9 +3,11 @@ class UserattendanceController < ApplicationController
     @studentId = params[:student_id]
     @month = params[:month]
     # if request.post? then
+    # @studentId = nil
       result = Attendance.where(student_id: @studentId).where(month: @month)
       @studentId = result.all
       render json: @studentId
+    @studentId = nil
     # end
   end
 
