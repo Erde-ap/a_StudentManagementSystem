@@ -3,15 +3,15 @@ import {launchState} from '../actions'
 class StudentData {
     static async getStudentData(dispatch) {
         const result = {year:[],month:[]};
-        // const result1 = await fetch('http://localhost:4200/test?student_id=1196500&month=5');
-        const result1 = await fetch('http://192.168.41.5:4200/test?student_id=1196500&month=5');
+        const result1 = await fetch('http://localhost:4200/test?student_id=1196500&month=5');
+        // const result1 = await fetch('http://192.168.41.5:4200/test?student_id=1196500&month=5');
 
-        // const fetchResult = await fetch('http://localhost:4200/rate?student_id=1196500');
-        const fetchResult = await fetch('http://192.168.41.5:4200/rate?student_id=1196500');
+        const fetchResult = await fetch('http://localhost:4200/rate?student_id=1196500');
+        // const fetchResult = await fetch('http://192.168.41.5:4200/rate?student_id=1196500');
         const result2 = await fetchResult.json();
         const result3 = [];
-        for( let key in result2){
-            let n = {num:result2[key]};
+        for( let num in result2){
+            let n = {num:result2[num]};
             result3.push( n )
         }
         result.year = await result3;
