@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {patchNextMonth, patchPrevMonth} from "../actions";
+import StudentData from '../models/StudentData'
 import StudentView from '../components/StudentView';
 
 
@@ -11,11 +11,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     onNextMonth: () => {
         console.log('Next');
-        dispatch(patchNextMonth());
+        StudentData.updateMonth(dispatch,4)
+
     },
     onPrevMonth: () => {
         console.log('Prev');
-        dispatch(patchPrevMonth());
+        StudentData.updateMonth(dispatch,6)
     }
 });
 
