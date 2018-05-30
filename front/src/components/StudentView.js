@@ -47,7 +47,7 @@ const StudentView = ({student,studentYear,onNextMonth,onPrevMonth}) => (
         </Row>
         <Row className="mt-30">
             <Col lg={{size:5}}>
-                <Table  className="table-bordered ">
+                <Table  className="table-bordered">
                     <thead>
                     <tr>
                         <th colSpan={2}>日付</th>
