@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_22_033837) do
+ActiveRecord::Schema.define(version: 2018_05_29_010146) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "student_id"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 2018_05_22_033837) do
     t.integer "req_period3"
     t.integer "req_period4"
     t.integer "req_period5"
+    t.string "apply_date"
+    t.boolean "approval_state"
+    t.string "student_name"
     t.index ["student_id_id"], name: "index_requests_on_student_id_id"
   end
 
