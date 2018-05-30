@@ -1,12 +1,11 @@
 import React from 'react';
-import Student from '../container/Student'
-import Login from '../components/Login'
-import SendChange from '../components/SendChange'
-import FirstLogin from '../components/FirstLogin'
+import Header from '../components/Header'
+import Main from "./Main";
 
 const App = () => (
     <React.Fragment>
-        <FirstLogin/>
+        <Header/>
+        <Main/>
     </React.Fragment>
 );
 

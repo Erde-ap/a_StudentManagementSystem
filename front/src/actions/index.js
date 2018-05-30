@@ -1,18 +1,7 @@
-// export const launch = () => {
-//     return {
-//         type: 'LAUNCH'
-//     };
-// };
-// function launchState(students) {
-//     return {
-//         type: 'LAUNCH',
-//         students
-//     };
-// }
-export const onNextTodo = month => ({
-    type: 'ON_NEXT_TODO',
+export const onUpdateMonth = month => ({
+    type: 'ON_UPDATE_MONTH',
     month
-})
+});
 
 export const launchState = json => ({
     type: 'LAUNCH',
