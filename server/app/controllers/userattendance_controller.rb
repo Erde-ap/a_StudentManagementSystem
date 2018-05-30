@@ -6,6 +6,7 @@ class UserattendanceController < ApplicationController
       result = Attendance.where(student_id: @studentId).where(month: @month)
       @studentId = result.all
       render json: @studentId
+    @studentId = nil
     # end
   end
 
