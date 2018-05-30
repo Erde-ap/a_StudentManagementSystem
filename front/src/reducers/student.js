@@ -2,10 +2,10 @@ const student = (state = {year: [{}], month: [{}]}, action) => {
     switch (action.type) {
         case 'LAUNCH' :
             return action.json;
-        case 'NEXT_MONTH' :
+        case 'ON_UPDATE_MONTH' :
             return {
                 ...state,
-                month : action.json.month
+                month: action.month
             };
         default:
             return state;

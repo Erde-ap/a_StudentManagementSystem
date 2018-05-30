@@ -1,4 +1,4 @@
-import {launchState} from '../actions'
+import {launchState,onUpdateMonth} from '../actions'
 
 class StudentData {
     static async getStudentData(dispatch) {
@@ -16,7 +16,14 @@ class StudentData {
         }
         result.year = await result3;
         result.month = await result1.json();
-        dispatch(launchState(result))
+        dispatch(launchState(result));
+    }
+
+    static async updateMonth(dispatch, currentMonth){
+        const getMonth = await fetch(`http://localhost:4200/test?student_id=1196500&month=${currentMonth}`);
+        // const getMonth = await fetch(`http://192.168.41.5:4200/test?student_id=1196500&month=${currentMonth}`);
+        const fetchMonth = await getMonth.json();
+        dispatch(onUpdateMonth(await fetchMonth))
     }
 
     static getDayOfTheWeek(year, month, day) {
