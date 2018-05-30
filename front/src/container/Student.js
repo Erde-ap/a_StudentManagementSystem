@@ -9,14 +9,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onNextMonth: () => {
+    onNextMonth: (month) => {
         console.log('Next');
-        StudentData.updateMonth(dispatch,4)
+        month === 12 ? month = 1 : month++;
+        StudentData.updateMonth(dispatch,month)
 
     },
-    onPrevMonth: () => {
+    onPrevMonth: (month) => {
         console.log('Prev');
-        StudentData.updateMonth(dispatch,6)
+        month === 1 ? month = 12 : month--;
+        StudentData.updateMonth(dispatch,month)
     }
 });
 

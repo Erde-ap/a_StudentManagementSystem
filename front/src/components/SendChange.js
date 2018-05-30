@@ -1,12 +1,8 @@
 import React, {Component} from 'react'
 import {Container, Row, Col, Form, FormGroup, Label, Input, Button} from 'reactstrap'
-import Header from './Header'
 
-class SendChange extends Component{
-    render(){
-        return(
+const SendChange =  ({}) => (
             <Container>
-                <Header/>
                 <Row className="mt-80">
                     <Col lg={{size:4,offset:4}}>
                         <h1 className="text-center">出席状況の変更</h1>
@@ -16,7 +12,7 @@ class SendChange extends Component{
                     <FormGroup row>
                         <Label for="exampleDate" lg={{size:4, offset:4}}>日付</Label>
                         <Col lg={{size:4, offset:4}}>
-                            <Input type="date" name="date" id="dateId" value="2018-05-24" />
+                            <Input type="date" name="date" id="dateId" />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -67,7 +63,5 @@ class SendChange extends Component{
                 </Form>
             </Container>
         )
-    }
-}
 
 export default SendChange
