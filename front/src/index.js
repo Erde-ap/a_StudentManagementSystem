@@ -28,7 +28,6 @@ render(
 store.dispatch(StudentData.getStudentData);
 
 
-
 //Storeの中身をコンソールに表示
 store.subscribe(() =>
     console.log(store.getState())

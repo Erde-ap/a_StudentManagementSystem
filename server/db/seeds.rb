@@ -11,7 +11,7 @@ User.create(
     student_id:1196499,
     attendance_id:1,
     password:'kH96rQaz',
-    name:'麻生達男',
+    name:"麻生達男",
     grade:4,
     classes:1,
     permission:0,
@@ -31,12 +31,13 @@ User.create(student_id:1196510, attendance_id:12, password:'Tu5aBVRi', name:'竹
 User.create(student_id:1196511, attendance_id:13, password:'dL24hCcJ', name:'徳田敏宏', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196512, attendance_id:14, password:'uX2H6get', name:'富永康子', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196513, attendance_id:15, password:'iD6AUz2X', name:'藤村千代', grade:4, classes:1, permission:0, state:false)
-User.create(student_id:0000001, attendance_id:0, password:'r8FPkwev', name:'岡晋一', grade:0, classes:1, permission:2, state:false)
-User.create(student_id:0100001, attendance_id:0, password:'Pkgkme7e', name:'江口良一', grade:0, classes:1, permission:2, state:false)
+User.create(student_id:9900000, attendance_id:0, password:'r8FPkwev', name:'岡晋一', grade:0, classes:1, permission:2, state:false)
+User.create(student_id:9990000, attendance_id:0, password:'Pkgkme7e', name:'江口良一', grade:0, classes:1, permission:2, state:false)
 
 #request作成(先頭のみわかりやすく改行)
 Request.create(
     student_id:1196500,
+    student_name:'有馬敏伸',
     req_year:2018,
     req_month:5,
     req_day:8,
@@ -48,10 +49,14 @@ Request.create(
     req_period2:0,
     req_period3:0,
     req_period4:0,
-    req_period5:0
+    req_period5:0,
 )
-Request.create(student_id:1196513, req_year:2018, req_month:5, req_day:8, req_type:2, reason:'風邪を引いていたので出席していません', req_date:'2018,05,09', apply_state:false, req_period1:2, req_period2:2, req_period3:2, req_period4:2, req_period5:2,)
-Request.create(student_id:1196506, req_year:2018, req_month:5, req_day:9, req_type:1, reason:'欠席じゃなくて遅刻です', req_date:'2018,05,10', apply_state:false, req_period1:1, req_period2:2, req_period3:2, req_period4:2, req_period5:2,)
+Request.create(student_id:1196513, student_name:'藤村千代', req_year:2018, req_month:5, req_day:8, req_type:2, reason:'風邪を引いていたので出席していません', req_date:'2018,05,09', apply_state:false, req_period1:2, req_period2:2, req_period3:2, req_period4:2, req_period5:2,)
+Request.create(student_id:1196506, student_name:'加藤哲朗', req_year:2018, req_month:5, req_day:9, req_type:1, reason:'欠席じゃなくて遅刻です', req_date:'2018,05,10', apply_state:false, req_period1:1, req_period2:2, req_period3:2, req_period4:2, req_period5:2,)
+Request.create(student_id:1196500, student_name:'有馬敏伸', req_year:2018, req_month:5, req_day:4, req_type:0, reason:'その日は出席していました。変更をおねがいします。', req_date:'2018,05,04', apply_state:true, req_period1:2, req_period2:2, req_period3:2, req_period4:2, req_period5:2, approval_state:true, apply_date:'2018,05,07')
+Request.create(student_id:1196506, student_name:'加藤哲朗', req_year:2018, req_month:5, req_day:5, req_type:0, reason:'出席が終わる頃にはいました。これはギリギリで出席になるはずです。変更をおねがいします。', req_date:'2018,05,05', apply_state:true, req_period1:1, req_period2:2, req_period3:2, req_period4:2, req_period5:2,approval_state:false, apply_date:'2018,05,07')
+
+
 #attendances作成(先頭のみわかりやすく改行)
 # 1月
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2019,01.01,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2019, month:1, day:1)
@@ -150,7 +155,7 @@ Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2019,03.31,14,50', perio
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.01,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:1)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.02,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:2)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.03,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:3)
-Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.04,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:4)
+Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.04,14,50', period1:3, period2:3, period3:3, period4:3, period5:1, year:2018, month:4, day:4)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.05,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:5)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.06,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:6)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.07,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:7)
@@ -182,7 +187,7 @@ Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.01,14,50', perio
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.02,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:2)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.03,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:3)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.04,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:4)
-Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.05,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:5)
+Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.05,14,50', period1:0, period2:0, period3:4, period4:3, period5:2, year:2018, month:5, day:5)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.06,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:6)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.07,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:7)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.08,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:8)
@@ -207,15 +212,15 @@ Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.26,14,50', perio
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.27,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:27)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.28,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:28)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.29,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:29)
-Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.30,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:30)
-Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.31,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:5, day:31)
+Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.30,14,50', period1:9, period2:9, period3:2, period4:2, period5:9, year:2018, month:5, day:30)
+Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,05.31,14,50', period1:1, period2:2, period3:3, period4:4, period5:5, year:2018, month:5, day:31)
 # 6
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.01,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:1)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.02,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:2)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.03,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:3)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.04,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:4)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.05,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:5)
-Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.06,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:6)
+Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.06,14,50', period1:0, period2:1, period3:2, period4:3, period5:4, year:2018, month:6, day:6)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.07,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:7)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.08,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:8)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.09,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:9)
@@ -238,7 +243,7 @@ Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.25,14,50', perio
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.26,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:26)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.27,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:27)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.28,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:28)
-Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.29,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:29)
+Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.29,14,50', period1:2, period2:3, period3:5, period4:8, period5:1, year:2018, month:6, day:29)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,06.30,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:6, day:30)
 # 7
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,07.01,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:7, day:1)
