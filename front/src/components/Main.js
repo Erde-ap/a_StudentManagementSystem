@@ -11,7 +11,7 @@ const Main = () => (
         <Switch>
             <Route exact path="/"  component={Login} />
             <Route path="/student" component={Student} />
-            <Route path="/change/:date" render={props => <SendChange match={props.match} />} />
+            <Route path="/change/:id/:date" component={SendChange} />} />
         </Switch>
     </main>
 );

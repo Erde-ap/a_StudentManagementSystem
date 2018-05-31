@@ -3,13 +3,19 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
 import StudentData from '../models/StudentData'
 import {Link} from "react-router-dom";
+
 class DayTable extends Component {
     render() {
         const dayData = this.props.dayData;
-
+        const changeDate = (date) => {
+            return date > 10 ? date : `0${date}`;
+        };
         return (
             <tr key={dayData.id}>
-                <td><Link to={`change/2018-4-12`}>{dayData.day}</Link></td>
+                <td><Link to={`change/${dayData.student_id}/${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`}>
+                    {dayData.day}
+                </Link>
+                </td>
                 <td>{StudentData.getDayOfTheWeek(dayData.year, dayData.month, dayData.day)}</td>
                 {gridStyle(dayData.period1)}
                 {gridStyle(dayData.period2)}
