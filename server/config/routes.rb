@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/rate',to: 'userattendance#rate'
   get '/login', to: 'login#login'
   get '/showlist',to: 'teacherview#showtime'
+  get '/showweek',to: 'teacherview#getweek'
   get '/condel',to: 'confirmation_of_delivery#delivery_not_read'
   get '/already',to: 'confirmation_of_delivery#delivery_already_read'
   get '/checkpost',to: 'confirmation_of_delivery#change_apply_state'
