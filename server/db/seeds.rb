@@ -11,11 +11,11 @@ User.create(
     student_id:1196499,
     attendance_id:1,
     password:'kH96rQaz',
-    name:"麻生達男",
+    name:'麻生達男',
     grade:4,
     classes:1,
     permission:0,
-    state:false
+    state:false,
 )
 User.create(student_id:1196500, attendance_id:2, password:'e7MdK3Lz', name:'有馬敏伸', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196501, attendance_id:3, password:'W9q8zLei', name:'依田孝子', grade:4, classes:1, permission:0, state:false)
