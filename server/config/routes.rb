@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/condel',to: 'confirmation_of_delivery#delivery_not_read'
   get '/already',to: 'confirmation_of_delivery#delivery_already_read'
   get '/checkpost',to: 'confirmation_of_delivery#change_apply_state'
+  get '/daystate',to: 'daystate#daystate'
   post '/changepost',to: 'add_delivery_to_database#create'
   post 'selo',to: 'sessions#index'
+  post '/passchange',to: 'passchange#passchange' 
 end
