@@ -19,8 +19,6 @@ class SessionsController < ApplicationController
         render json: @notice
       else
         session[:access_token] = nil
-        @notice = "はきはき"
-        render json: @notice
       end
     end
   end
