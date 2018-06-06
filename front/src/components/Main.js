@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Login from "./Login";
 import Student from "../container/Student";
-import SendChange from "./SendChange";
+import SendChange from "../container/SendChange";
 import Top from "./Top";
 import ChangeList from "./ChangeList"
 import StudentList from "./StudentList"
@@ -15,7 +15,6 @@ const Main = () => (
         <Switch>
             <Route exact path="/"  component={Login} />
             <Route path="/student" component={Student} />
-            <Route path="/change" component={SendChange} />
             <Route path="/top" component={Top} />
             <Route path="/changelist" component={ChangeList} />
             <Route path="/studentlist" component={StudentList} />
