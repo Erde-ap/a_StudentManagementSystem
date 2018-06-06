@@ -1,15 +1,15 @@
 import {connect} from 'react-redux';
-import SendChangeView from '../components/SendChangeView';
-import {postMessage} from "../actions";
+import SendChangeView from '../components/SendChangeView'
+import {onUpdateMonthState} from '../actions/index'
 
 const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    send : (e) => {
-        e.preventDefault();
-        dispatch(postMessage(this.myInput.value));
-        this.myInput.value = '';
+    handleSubmit : (values) => {
+        values.preventDefault();
+        // print the form values to the console
+        console.log(values)
     }
 });
 
