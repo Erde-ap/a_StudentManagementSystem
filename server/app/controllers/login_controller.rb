@@ -1,8 +1,6 @@
 class LoginController < ApplicationController
   def login
     # 使わないかも？
-    @student_id = 1196500#params[:student_id]
-#    @password = e7MdK3Lz#params[:password]
     account = User.find_by(student_id: @student_id)
     if login_user != nil
       render json:{
@@ -13,7 +11,7 @@ class LoginController < ApplicationController
           'class' => login_user.classes,
           'permission' => login_user.permission,
           'sessions' => login_user.name.hash,
-          'password' => login_user.password_digest
+          'password' => login_user.password
       }
     else
       render json: '403 Forbidden'

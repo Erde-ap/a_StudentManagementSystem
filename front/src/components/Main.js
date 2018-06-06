@@ -3,10 +3,10 @@ import { Switch, Route } from 'react-router-dom';
 
 import Login from "./Login";
 import Student from "../container/Student";
-import SendChange from "../container/SendChange";
-
+import SendChange from "../container/SendChange"
 
 const Main = () => (
+
     <main>
         <Switch>
             <Route exact path="/"  component={Login} />

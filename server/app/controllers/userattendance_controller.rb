@@ -153,14 +153,5 @@ class UserattendanceController < ApplicationController
                  'Mar' => @last3.to_int,
     }
     render json: personal
-
   end
-  # def index
-  #   @permission = 0 #params[:permission]
-  #   @classes = 1#params[:classes]
-  #   @month = 5#params[:month]
-  #
-  #   result = User.where(parmission: @permission).where(classes: @classes).where(month: @m)
-  #   @result = result.all
-  # end
 end
