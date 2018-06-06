@@ -21,9 +21,9 @@ csv2 = 0    #CSV更新時間を格納する
 number = 1
 
 every(1.second, 'period1.job') do   #1秒ごとにCSV更新時間を確認し更新されて入れば処理
-   CSV.foreach("/home/ec2-user/environment/CSV/Student.csv", headers: true) do |row|   #CSV読み込み
+   CSV.foreach("/home/jaguar/Student.csv", headers: true) do |row|   #CSV読み込み
       #ファイル更新時間更新
-      file = File::stat("/home/ec2-user/environment/CSV/Student.csv")   #CSV更新時間読み込み
+      file = File::stat("/home/jaguar/Student.csv")   #CSV更新時間読み込み
       csv2 = file.mtime    #↑を代入
       
       #ファイル更新確認
