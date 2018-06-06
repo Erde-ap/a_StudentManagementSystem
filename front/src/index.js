@@ -2,18 +2,13 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter} from "react-router-dom";
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import reducers from './reducers';
 import "./app.css";
-
+import configureStore from './store/'
 import App from './components/App';
-import StudentData from './models/StudentData'
+import {fetchYearState, fetchMonthState} from './actions/index'
 
-let store = createStore(
-    reducers,
-    applyMiddleware(thunk)
-);
+const store = configureStore();
+
 
 render(
     <Provider store={store}>
@@ -24,8 +19,12 @@ render(
     document.getElementById('root')
 );
 
+
+
 //Storeの中身をサーバーから問い合わせ
-store.dispatch(StudentData.getStudentData);
+store.dispatch(fetchMonthState(5));
+store.dispatch(fetchYearState());
+
 
 
 //Storeの中身をコンソールに表示

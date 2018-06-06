@@ -1,0 +1,11 @@
+<h1>Sessions#index</h1>
+<h1>簡易ログイン画面</h1>
+<%= form_with url: sessions_index_path %>
+名前:<%= text_field_tag :name %>
+
+パスワード:<%= password_field_tag :password %>
+
+<%= submit_tag 'ログイン' %>
+
+<%= @notice %>
+<p>Find me in app/views/sessions/index.html.erb</p>

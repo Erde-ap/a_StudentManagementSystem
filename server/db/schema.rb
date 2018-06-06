@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_010146) do
+ActiveRecord::Schema.define(version: 2018_06_04_015422) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "student_id"
-    t.integer "period1", default: 9, null: false
-    t.integer "period2", default: 9, null: false
-    t.integer "period3", default: 9, null: false
-    t.integer "period4", default: 9, null: false
-    t.integer "period5", default: 9, null: false
+    t.integer "period1", default: 8, null: false
+    t.integer "period2", default: 8, null: false
+    t.integer "period3", default: 8, null: false
+    t.integer "period4", default: 8, null: false
+    t.integer "period5", default: 8, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "year"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_010146) do
     t.string "reason"
     t.string "req_date", null: false
     t.boolean "apply_state", default: false, null: false
-    t.integer "student_id_id"
     t.integer "req_period1"
     t.integer "req_period2"
     t.integer "req_period3"
@@ -46,7 +45,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_010146) do
     t.string "apply_date"
     t.boolean "approval_state"
     t.string "student_name"
-    t.index ["student_id_id"], name: "index_requests_on_student_id_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -69,7 +67,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_010146) do
   create_table "users", force: :cascade do |t|
     t.integer "student_id", null: false
     t.integer "attendance_id", null: false
-    t.string "password", null: false
     t.string "name"
     t.integer "grade"
     t.integer "classes"
@@ -77,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_010146) do
     t.boolean "state", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   create_table "views", force: :cascade do |t|
