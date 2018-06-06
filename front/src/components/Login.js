@@ -13,7 +13,7 @@ class Login extends Component{
                     </Col>
                 </Row>
                 <Form>
-                    <FormGroup row>
+                    <FormGroup row className="mt-30">
                         <Label for="exampleDate" lg={{size:4, offset:4}}>学籍番号</Label>
                         <Col lg={{size:4, offset:4}}>
                             <Input type="studentNumber" name="studentNumber" id="studentNumberId" />
@@ -23,7 +23,7 @@ class Login extends Component{
                             <Input type="password" name="password" id="passwordId" />
                         </Col>
                     </FormGroup>
-                    <FormGroup row>
+                    <FormGroup row className="mt-50">
                         <Col lg={{size:4, offset:4}}>
                             <Button color="primary" size="lg" block>ログイン</Button>
                         </Col>
