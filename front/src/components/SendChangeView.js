@@ -4,10 +4,11 @@ import {Link} from "react-router-dom";
 
 const postDateCreate = (date) => {
     let arrayDate = date.split("-");
-    arrayDate[3] = arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2]
+    arrayDate[3] = arrayDate[0] + "/" + arrayDate[1] + "/" + arrayDate[2];
     return arrayDate;
 };
-const SendChange = ({match}) => (
+
+const SendChangeView = ({match,send}) => (
     <Container>
         <Row className="mt-80">
             <Col lg={{size: 4, offset: 4}}>
@@ -59,12 +60,12 @@ const SendChange = ({match}) => (
             <FormGroup row>
                 <Label for="exampleText" lg={{size: 4, offset: 4}}>理由(150文字以内)</Label>
                 <Col lg={{size: 4, offset: 4}}>
-                    <Input type="textarea" name="reason" id="exampleText" maxLength="150"/>
+                    <Input type="textarea" maxLength="150" ref={(ref) => (this.myInput = ref)}/>
                 </Col>
             </FormGroup>
             <FormGroup row>
                 <Col lg={{size: 4, offset: 4}}>
-                    <Link to="/student"><Button color="primary" size="lg" type="submit" block>送信</Button></Link>
+                    <Link to="/student"><Button color="primary" size="lg" type="submit" onClick={(event) => send(event)} block>送信</Button></Link>
                 </Col>
             </FormGroup>
             <input type="hidden" name="student_id" value={match.params.id}/>
@@ -77,4 +78,4 @@ const SendChange = ({match}) => (
     </Container>
 );
 
-export default SendChange
+export default SendChangeView

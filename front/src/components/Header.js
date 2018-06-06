@@ -16,10 +16,10 @@ class Header extends Component {
                 </Nav>
                 <Nav className="ml-auto" navbar>
                     <NavItem>
-                        <Link to="student">生徒画面</Link>
+                        <Link to="/student">生徒画面</Link>
                     </NavItem>
                     <NavItem>
-                        <Link to="change">変更届け</Link>
+                        <Link to="/change">変更届け</Link>
                     </NavItem>
                 </Nav>
             </Navbar>

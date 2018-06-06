@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Login from "./Login";
 import Student from "../container/Student";
-import SendChange from "./SendChange";
+import SendChange from "../container/SendChange";
 
 
 const Main = () => (
