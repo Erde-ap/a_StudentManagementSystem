@@ -1,18 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import "../../node_modules/bootstrap/dist/css/bootstrap.css"
 
 import StudentData from '../models/StudentData'
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {loadInitializeState} from "../actions";
 
-class DayTable extends Component {
-    render() {
-        const dayData = this.props.dayData;
-        const changeDate = (date) => {
-            return date > 10 ? date : `0${date}`;
-        };
+let DayTable = props => {
+    const { dayData,changeDate,onClick } = props;
         return (
             <tr key={dayData.id}>
-                <td><Link to={`change/${dayData.student_id}/${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`}>
+                <td><Link to={`change/${dayData.student_id}/${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`}
+                          onClick={() => onClick({
+                              req_date:`${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`,
+                              req_year:`${dayData.year}`,
+                              req_month:`${dayData.month}`,
+                              req_day:`${dayData.day}`,
+                              student_id:`${dayData.student_id}`,
+                              reason:'',
+                              periodStart:'1',
+                              periodEnd:'1'
+
+                          })}>
                     {dayData.day}
                 </Link>
                 </td>
@@ -24,8 +33,7 @@ class DayTable extends Component {
                 {gridStyle(dayData.period5)}
             </tr>
         )
-    }
-}
+};
 
 function gridStyle(grid) {
     switch (grid) {
@@ -46,4 +54,23 @@ function gridStyle(grid) {
     }
 }
 
-export default DayTable
+const mapStateToProps = (state, ownProps) => ({
+    dayData : ownProps.dayData,
+    changeDate : (date) => {
+        return date > 10 ? date : `0${date}`
+    }
+});
+
+const mapDispatchToProps = (dispatch, state) => {
+    return {
+        onClick: (values) => {
+            dispatch(loadInitializeState(values))
+        }
+    }
+};
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DayTable);

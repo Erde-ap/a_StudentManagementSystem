@@ -18,9 +18,9 @@ class Header extends Component {
                     <NavItem>
                         <Link to="/student">生徒画面</Link>
                     </NavItem>
-                    <NavItem>
-                        <Link to="/change">変更届け</Link>
-                    </NavItem>
+                    {/*<NavItem>*/}
+                        {/*<Link to="/change">変更届け</Link>*/}
+                    {/*</NavItem>*/}
                 </Nav>
             </Navbar>
         )

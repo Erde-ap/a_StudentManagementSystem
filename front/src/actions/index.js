@@ -6,15 +6,17 @@ export const YEAR_SUCCESS = 'YEAR_SUCCESS';
 export const UPDATE_MONTH_SUCCESS = 'UPDATE_MONTH_SUCCESS';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
+export const LOAD_INITIALISE = 'LOAD_INITIALISE';
 
-// launchState,onUpdateMonth
 
-function requestMessageState() { // requestMessages
+// fetchの開始
+function requestMessageState() {
     return {
         type: FETCH_MESSAGES
     }
 }
 
+// jsonの受け取り(年)
 function receiveYearState(json) { // receiveMessages
     return {
         type: YEAR_SUCCESS,
@@ -22,6 +24,7 @@ function receiveYearState(json) { // receiveMessages
     }
 }
 
+// jsonの受け取り(月)
 function receiveMonthState(json) { // receiveMessages
     return {
         type: MONTH_SUCCESS,
@@ -29,10 +32,18 @@ function receiveMonthState(json) { // receiveMessages
     }
 }
 
+// 月の更新
 function updateMonthState(json) { // receiveMessages
     return {
         type: UPDATE_MONTH_SUCCESS,
         messages: json
+    }
+}
+
+export function loadInitializeState(data) {
+    return {
+        type: LOAD_INITIALISE,
+        data: data
     }
 }
 
@@ -47,7 +58,6 @@ function addNewMessageSuccess() {
         type: ADD_MESSAGE_SUCCESS,
     };
 }
-
 // メッセージ取得
 export function fetchMonthState(month) {
     return dispatch => {
@@ -60,6 +70,7 @@ export function fetchMonthState(month) {
     }
 }
 
+// 月の更新
 export function onUpdateMonthState(month) {
     return dispatch => {
         dispatch(requestMessageState());
@@ -71,6 +82,7 @@ export function onUpdateMonthState(month) {
     }
 }
 
+// １年間の出席率
 export function fetchYearState() {
     return dispatch => {
         dispatch(requestMessageState());

@@ -27,13 +27,12 @@ export default function student(state = initialState, action) {
             };
         case 'ADD_MESSAGE':
             return Object.assign({}, state, {
-                isFetching: true
+                // isFetching: true
             });
         case 'ADD_MESSAGE_SUCCESS':
             return Object.assign({}, state, {
-                isFetching: false,
+                // isFetching: false,
             });
-
         default:
             return state;
     }
