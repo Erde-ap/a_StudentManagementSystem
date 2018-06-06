@@ -37,19 +37,3 @@ export default function student(state = initialState, action) {
             return state;
     }
 }
-//
-// const student = (state =, action) => {
-//     switch (action.type) {
-//         case 'LAUNCH' :
-//             return action.json;
-//         case 'ON_UPDATE_MONTH' :
-//             return {
-//                 ...state,
-//                 month: action.month
-//             };
-//         default:
-//             return state;
-//     }
-// };
-//
-// export default student
