@@ -3,13 +3,14 @@ import {Container, Row} from 'reactstrap'
 import Header from './Header'
 import FullCalendar from 'fullcalendar-reactwrapper';
 import '../../node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
+//import SkyLight from 'react-skylight'
 //import Popup from 'react-popup'
+//import Popup from 'reactjs-popup'
+//import Modal from 'react-modal'
 //import {$} from 'jquery';
 //import 'fullcalendar';
 
-
 class DayChange extends Component{
-
     render(){
         return(
             <Container>
@@ -28,9 +29,7 @@ class DayChange extends Component{
                         eventLimit= {true} // allow "more" link when too many events
                         selectable={true}
                         locale={'ja'}
-                        dayClick={function(date,jsEvent,view) {
-                            alert(date.format('YYYY/MM/DD'))
-                        }}
+                        dayClick={(date) =>{} }
                     />
                 </Row>
             </Container>
