@@ -21,7 +21,6 @@ class Header extends Component {
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem ><Link to="/student">生徒画面</Link></DropdownItem>
-                            <DropdownItem ><Link to="/change">変更届け</Link></DropdownItem>
                             <DropdownItem divider />
                             <DropdownItem ><Link to="/top">トップ</Link></DropdownItem>
                             <DropdownItem ><Link to="/studentlist">生徒状況一覧</Link></DropdownItem>

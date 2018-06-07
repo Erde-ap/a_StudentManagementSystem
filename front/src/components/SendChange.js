@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch, state) => {
             for (let i = values.periodStart; i <= values.periodEnd; i++) {
                 values = {
                     ...values,
-                    ['period' + i]: "true"
+                    ['period' + i]: values.req_type
                 }
             }
             console.log(values);

@@ -102,12 +102,15 @@ export function fetchYearState() {
 // メッセージ送信
 export function postMessage(messageBody) {
     return dispatch => {
-        console.log(messageBody)
         dispatch(addNewMessage());
         return axios.post('http://localhost:4200/changepost',
             {
+                headers: {
+                    'access-control-allow-origin': '*',
+                    'Content-Type': 'application/json'
+                },
                 body: messageBody
-            }, {withCredentials: true}
+            }, {withCredentials: false}
         ).then((response) => {
             dispatch(requestMessageState());
             dispatch(addNewMessageSuccess());

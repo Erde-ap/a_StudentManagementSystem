@@ -12,14 +12,16 @@ let DayTable = props => {
             <tr key={dayData.id}>
                 <td><Link to={`change/${dayData.student_id}/${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`}
                           onClick={() => onClick({
-                              req_date:`${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`,
-                              req_year:`${dayData.year}`,
-                              req_month:`${dayData.month}`,
-                              req_day:`${dayData.day}`,
-                              student_id:`${dayData.student_id}`,
-                              reason:'',
-                              periodStart:'1',
-                              periodEnd:'1'
+                              "req_year":`${dayData.year}`,
+                              "req_month":`${dayData.month}`,
+                              "req_day":`${dayData.day}`,
+                              "student_id":`${dayData.student_id}`,
+                              "reason":'',
+                              "period1":`${dayData.period1}`,
+                              "period2":`${dayData.period2}`,
+                              "period3":`${dayData.period3}`,
+                              "period4":`${dayData.period4}`,
+                              "period5":`${dayData.period5}`,
 
                           })}>
                     {dayData.day}
