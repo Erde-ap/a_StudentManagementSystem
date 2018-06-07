@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Container, Row} from 'reactstrap'
-import Header from './Header'
 import FullCalendar from 'fullcalendar-reactwrapper';
 import '../../node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 //import SkyLight from 'react-skylight'
@@ -14,7 +13,6 @@ class DayChange extends Component{
     render(){
         return(
             <Container>
-                <Header/>
                 <Row className="mt-100">
                     <FullCalendar
                         id="user_id"

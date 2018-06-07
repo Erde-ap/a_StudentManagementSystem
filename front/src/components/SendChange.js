@@ -3,10 +3,10 @@ import {Button, Col, Container, FormGroup, Input, Label, Row} from 'reactstrap'
 import {Link} from "react-router-dom";
 import {Field, reduxForm} from 'redux-form'
 import {connect} from "react-redux";
-import { Redirect } from 'react-router'
-import {postMessage} from'../actions/index'
+import {Redirect} from 'react-router'
+import {postMessage} from '../actions/index'
 
-let sendChange = ({handleSubmit,match,onSubmit,isFetching}) => {
+let sendChange = ({handleSubmit, match, onSubmit, isFetching}) => {
     return (
         <Container>
             <Row className="mt-80">
@@ -78,14 +78,14 @@ let sendChange = ({handleSubmit,match,onSubmit,isFetching}) => {
                 </FormGroup>
             </form>
             {isFetching && (
-            <Redirect to={'/student'}/>
+                <Redirect to={'/student'}/>
             )}
         </Container>
     )
 };
 
 
-const mapStateToProps = (state,ownProps) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         initialValues: {...state.sendChange},
         isFetching: state.student.isFetching
@@ -94,12 +94,12 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = (dispatch, state) => {
     return {
-        onSubmit : (values) => {
-            for (let i = values.periodStart; i <= values.periodEnd; i++ ){
-                 values = {
-                     ...values,
-                     ['period' + i]: "true"
-                 }
+        onSubmit: (values) => {
+            for (let i = values.periodStart; i <= values.periodEnd; i++) {
+                values = {
+                    ...values,
+                    ['period' + i]: "true"
+                }
             }
             console.log(values);
             dispatch(postMessage(values));

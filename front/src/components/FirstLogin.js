@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
 import {Container, Row, Col, Form, FormGroup, Label, Input, Button} from 'reactstrap'
-import Header from './Header'
 
 class FirstLogin extends Component{
     render(){
         return(
             <Container>
-                <Header/>
                 <Row className="mt-80">
                     <Col lg={{size:4,offset:4}}>
                         <h1 class="text-center">パスワードの変更</h1>
