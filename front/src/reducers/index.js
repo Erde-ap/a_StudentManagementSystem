@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import student from './student'
+import student from './Student'
 import sendChange from './SendChange'
 import { reducer as formReducer } from 'redux-form'
 
