@@ -10,11 +10,6 @@ import StudentList from "./StudentList"
 import DayChange from "./DayChange"
 
 class Main extends React.Component {
-    saveSettings(values) {
-        // Handle form submit
-        // Save form fields
-        console.log(values)
-    }
 
     render() {
         return (
@@ -26,7 +21,7 @@ class Main extends React.Component {
                     <Route path="/changelist" component={ChangeList}/>
                     <Route path="/studentlist" component={StudentList}/>
                     <Route path="/daychange" component={DayChange}/>
-                    <Route path="/change/:id/:date" component={SendChange} onSubmit={this.saveSettings}/>
+                    <Route path="/change/:id/:date" component={SendChange}/>
                 </Switch>
             </main>
         )

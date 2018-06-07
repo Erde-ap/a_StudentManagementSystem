@@ -20,13 +20,13 @@ class Header extends Component {
                             画面遷移
                         </DropdownToggle>
                         <DropdownMenu right>
-                            <DropdownItem tag="a" href="/student">生徒画面</DropdownItem>
-                            <DropdownItem tag="a" href="/change">変更届け</DropdownItem>
+                            <DropdownItem ><Link to="/student">生徒画面</Link></DropdownItem>
+                            <DropdownItem ><Link to="/change">変更届け</Link></DropdownItem>
                             <DropdownItem divider />
-                            <DropdownItem tag="a" href="/top">トップ</DropdownItem>
-                            <DropdownItem tag="a" href="/studentlist">生徒状況一覧</DropdownItem>
-                            <DropdownItem tag="a" href="/changelist">変更届け一覧</DropdownItem>
-                            <DropdownItem tag="a" href="/daychange">出席日の変更</DropdownItem>
+                            <DropdownItem ><Link to="/top">トップ</Link></DropdownItem>
+                            <DropdownItem ><Link to="/studentlist">生徒状況一覧</Link></DropdownItem>
+                            <DropdownItem ><Link to="/changelist">変更届け一覧</Link></DropdownItem>
+                        <DropdownItem><Link to="/daychange">出席日の変更</Link></DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </Nav>
