@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   get '/daystate',to: 'daystate#daystate'
   post '/changepost',to: 'add_delivery_to_database#create'
   post 'selo',to: 'sessions#index'
-  post '/passchange',to: 'passchange#passchange' 
+  post '/passchange',to: 'passchange#password_changer'
 end
