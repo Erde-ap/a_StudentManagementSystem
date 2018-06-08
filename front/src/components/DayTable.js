@@ -7,34 +7,35 @@ import {connect} from "react-redux";
 import {loadInitializeState} from "../actions";
 
 let DayTable = props => {
-    const { dayData,changeDate,onClick } = props;
-        return (
-            <tr key={dayData.id}>
-                <td><Link to={`change/${dayData.student_id}/${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`}
-                          onClick={() => onClick({
-                              "req_year":`${dayData.year}`,
-                              "req_month":`${dayData.month}`,
-                              "req_day":`${dayData.day}`,
-                              "student_id":`${dayData.student_id}`,
-                              "reason":'',
-                              "period1":`${dayData.period1}`,
-                              "period2":`${dayData.period2}`,
-                              "period3":`${dayData.period3}`,
-                              "period4":`${dayData.period4}`,
-                              "period5":`${dayData.period5}`,
+    const {dayData, changeDate, onClick} = props;
+    return (
+        <tr key={dayData.id}>
+            <td><Link
+                to={`change/${dayData.student_id}/${dayData.year}-${changeDate(dayData.month)}-${changeDate(dayData.day)}`}
+                onClick={() => onClick({
+                    "req_year": `${dayData.year}`,
+                    "req_month": `${dayData.month}`,
+                    "req_day": `${dayData.day}`,
+                    "student_id": `${dayData.student_id}`,
+                    "reason": '',
+                    "period1": `${dayData.period1}`,
+                    "period2": `${dayData.period2}`,
+                    "period3": `${dayData.period3}`,
+                    "period4": `${dayData.period4}`,
+                    "period5": `${dayData.period5}`,
 
-                          })}>
-                    {dayData.day}
-                </Link>
-                </td>
-                <td>{StudentData.getDayOfTheWeek(dayData.year, dayData.month, dayData.day)}</td>
-                {gridStyle(dayData.period1)}
-                {gridStyle(dayData.period2)}
-                {gridStyle(dayData.period3)}
-                {gridStyle(dayData.period4)}
-                {gridStyle(dayData.period5)}
-            </tr>
-        )
+                })}>
+                {dayData.day}
+            </Link>
+            </td>
+            <td>{StudentData.getDayOfTheWeek(dayData.year, dayData.month, dayData.day)}</td>
+            {gridStyle(dayData.period1)}
+            {gridStyle(dayData.period2)}
+            {gridStyle(dayData.period3)}
+            {gridStyle(dayData.period4)}
+            {gridStyle(dayData.period5)}
+        </tr>
+    )
 };
 
 function gridStyle(grid) {
@@ -49,6 +50,8 @@ function gridStyle(grid) {
             return <td className="table-success">{grid}</td>;
         case 5 :
             return <td className="table-primary">{grid}</td>;
+        case 8 :
+            return <td></td>;
         case 9 :
             return <td className="none"></td>;
         default :
@@ -57,8 +60,8 @@ function gridStyle(grid) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    dayData : ownProps.dayData,
-    changeDate : (date) => {
+    dayData: ownProps.dayData,
+    changeDate: (date) => {
         return date > 10 ? date : `0${date}`
     }
 });

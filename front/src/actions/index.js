@@ -8,6 +8,15 @@ export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
 export const LOAD_INITIALISE = 'LOAD_INITIALISE';
 
+const axiosBase = axios;
+const api = axiosBase.create({
+    baseURL: 'http://localhost:4200/',
+    headers: {
+        'ContentType': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+    },
+    responseType: 'json'
+});
 
 // fetchの開始
 function requestMessageState() {
@@ -62,7 +71,7 @@ function addNewMessageSuccess() {
 export function fetchMonthState(month) {
     return dispatch => {
         dispatch(requestMessageState());
-        return axios.get(`http://localhost:4200/test?student_id=1196500&month=${month}`).then((response) => {
+        return api.get(`test?student_id=1196500&month=${month}`).then((response) => {
             dispatch(receiveMonthState(response.data));
         }).catch((response) => {
             console.log(response)
@@ -74,7 +83,7 @@ export function fetchMonthState(month) {
 export function onUpdateMonthState(month) {
     return dispatch => {
         dispatch(requestMessageState());
-        return axios.get(`http://localhost:4200/test?student_id=1196500&month=${month}`).then((response) => {
+        return api.get(`test?student_id=1196500&month=${month}`).then((response) => {
             dispatch(updateMonthState(response.data));
         }).catch((response) => {
             console.log(response)
@@ -86,7 +95,7 @@ export function onUpdateMonthState(month) {
 export function fetchYearState() {
     return dispatch => {
         dispatch(requestMessageState());
-        return axios.get('http://localhost:4200/rate?student_id=1196500').then((response) => {
+        return api.get('rate?student_id=1196500').then((response) => {
             let result = [];
             for (let num in response.data) {
                 let n = {num: response.data[num]};
@@ -103,14 +112,7 @@ export function fetchYearState() {
 export function postMessage(messageBody) {
     return dispatch => {
         dispatch(addNewMessage());
-        return axios.post('http://localhost:4200/changepost',
-            {
-                headers: {
-                    'access-control-allow-origin': '*',
-                    'Content-Type': 'application/json'
-                },
-                body: messageBody
-            }, {withCredentials: false}
+        return api.post('changepost',messageBody
         ).then((response) => {
             dispatch(requestMessageState());
             dispatch(addNewMessageSuccess());
