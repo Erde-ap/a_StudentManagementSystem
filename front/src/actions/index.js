@@ -114,10 +114,11 @@ export function postMessage(messageBody) {
         dispatch(addNewMessage());
         return api.post('changepost',messageBody
         ).then((response) => {
-            dispatch(requestMessageState());
+            console.log('送信成功');
             dispatch(addNewMessageSuccess());
         }).catch((response) => {
-            console.log(response)
+            console.log('送信失敗');
+            dispatch(addNewMessageSuccess());
         })
     }
 }

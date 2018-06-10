@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Container, Row, Col, Table, Button} from 'reactstrap'
+import StudentListTable from './StudentListTable'
 
-class StudentList extends Component {
-    render() {
-        return (
+const StudentListView = ({student,studentYear,onNextMonth,onPrevMonth}) => (
             <Container>
                 <Row className="mt-100">
                     <Col lg={{size: 4, offset: 2}}>
@@ -33,36 +32,7 @@ class StudentList extends Component {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>吉原菊江</td>
-                                <td>100%</td>
-                                <td className="table-warning">1</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                            </tr>
+                            <StudentListTable/>
                             <tr>
                                 <td>2</td>
                                 <td>吉原菊次</td>
@@ -115,8 +85,6 @@ class StudentList extends Component {
                     </Col>
                 </Row>
             </Container>
-        )
-    }
-}
+);
 
-export default StudentList
+export default StudentListView

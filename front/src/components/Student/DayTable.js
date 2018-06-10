@@ -1,10 +1,10 @@
 import React from 'react';
-import "../../node_modules/bootstrap/dist/css/bootstrap.css"
+import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 
-import StudentData from '../models/StudentData'
+import StudentData from '../../models/StudentData'
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {loadInitializeState} from "../actions";
+import {loadInitializeState} from "../../actions";
 
 let DayTable = props => {
     const {dayData, changeDate, onClick} = props;

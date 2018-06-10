@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {Field, reduxForm} from 'redux-form'
 import {connect} from "react-redux";
 import {Redirect} from 'react-router'
-import {postMessage} from '../actions/index'
+import {postMessage} from '../../actions/index'
 
 let sendChange = ({handleSubmit, match, onSubmit, isFetching}) => {
     return (
