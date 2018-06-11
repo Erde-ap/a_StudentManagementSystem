@@ -8,7 +8,7 @@ class TeacherviewController < ApplicationController
   
   while @x < User.count + 1
     if User.find(@x).classes == @classes.to_i && User.find(@x).grade == 4
-      @allmystudent << {'attendance_id' => @classes, 'name' => User.find(@x).name, 'syussekiritu' => syusseki}
+      @allmystudent << {'attendance_id' => User.find(@x).attendance_id, 'name' => User.find(@x).name, 'syussekiritu' => syusseki}
     end
     @x += 1
   end 
