@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Container, Row} from 'reactstrap'
 import FullCalendar from 'fullcalendar-reactwrapper';
-import '../../node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
+import '../../../node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 //import Popup from 'react-popup'
 //import {$} from 'jquery';
 //import 'fullcalendar';

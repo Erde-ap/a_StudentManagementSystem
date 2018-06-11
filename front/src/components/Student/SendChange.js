@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {Field, reduxForm} from 'redux-form'
 import {connect} from "react-redux";
 import {Redirect} from 'react-router'
-import {postMessage} from '../actions/index'
+import {postMessage} from '../../actions/index'
 
 let sendChange = ({handleSubmit, match, onSubmit, isFetching}) => {
     return (
@@ -40,11 +40,11 @@ let sendChange = ({handleSubmit, match, onSubmit, isFetching}) => {
                         <div>
                             <Input tag={Field} name="periodEnd" component="select" value="1">
                                 <option></option>
-                                <option value="1">1限から</option>
-                                <option value="2">2限から</option>
-                                <option value="3">3限から</option>
-                                <option value="4">4限から</option>
-                                <option value="5">5限から</option>
+                                <option value="1">1限まで</option>
+                                <option value="2">2限まで</option>
+                                <option value="3">3限まで</option>
+                                <option value="4">4限まで</option>
+                                <option value="5">5限まで</option>
                             </Input>
                         </div>
                     </Col>

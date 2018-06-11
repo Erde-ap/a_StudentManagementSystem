@@ -33,6 +33,6 @@ class AddDeliveryToDatabaseController < ApplicationController
                            approval_state: false
     )
     @newdate.save!
-    #  render json: @newdate#{'status'=> '申請完了！'}
+      render json: @newdate#{'status'=> '申請完了！'}
   end
 end
