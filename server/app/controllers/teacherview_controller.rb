@@ -66,7 +66,7 @@ class TeacherviewController < ApplicationController
     if count0 == 0 || count1 == 0
       return 0
     else
-      return ((count0.to_f / count1.to_f * 100).round(2) * 100).to_i
+      return (count0.to_f / count1.to_f * 100).round(0)
     end
   end
   
