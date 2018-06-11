@@ -7,20 +7,12 @@ class TeacherviewController < ApplicationController
   @day = Date.today
   
   while @x < User.count + 1
-    if User.find(@x).classes == @classes.to_i && User.find(@x).attendance_id != 0
-      @allmystudent << {'attendance_id' => findnumber, 'name' => findname, 'syussekiritu' => syusseki}
+    if User.find(@x).classes == @classes.to_i && User.find(@x).grade == 4
+      @allmystudent << {'attendance_id' => @classes, 'name' => User.find(@x).name, 'syussekiritu' => syusseki}
     end
     @x += 1
   end 
     render json: @allmystudent
-  end
-  
-  def findnumber
-    return User.find(@x).attendance_id
-  end
-  
-  def findname
-    return  User.find(@x).name
   end
   
   def syusseki
@@ -74,9 +66,8 @@ class TeacherviewController < ApplicationController
     if count0 == 0 || count1 == 0
       return 0
     else
-      return (count0.to_f / count1.to_f * 100).round(0)
+      return ((count0.to_f / count1.to_f * 100).round(1) * 100).to_i
     end
-    
   end
   
   def getweek
