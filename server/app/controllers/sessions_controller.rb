@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       # userの中身があるかを判断しuser.authenticateでパスワードが一致しているかを返す
       if user && user.authenticate(params[:password])
         # 一致していたらセッションにユーザー名を登録
-        session[:access_token] = params[:password].hash
+        session[:access_token] = params[:name].hash
         render json: {'session' => session[:access_token]}
       else
         session[:access_token] = nil
