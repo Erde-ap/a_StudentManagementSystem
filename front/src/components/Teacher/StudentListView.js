@@ -1,8 +1,9 @@
 import React from 'react'
 import {Container, Row, Col, Table, Button} from 'reactstrap'
 import StudentListTable from './StudentListTable'
+import StudentData from '../../models/StudentData'
 
-const StudentListView = ({studentList,week,onNextWeek,onPrevWeek}) => (
+const StudentListView = ({studentList,student,week,onNextWeek,onPrevWeek}) => (
             <Container>
                 <Row className="mt-100">
                     <Col lg={{size: 4, offset: 2}}>
@@ -24,49 +25,34 @@ const StudentListView = ({studentList,week,onNextWeek,onPrevWeek}) => (
                                 <th>番号</th>
                                 <th>氏名</th>
                                 <th>出席率</th>
-                                <th colSpan={5}>4/17(月)</th>
-                                <th colSpan={5}>4/18(火)</th>
-                                <th colSpan={5}>4/19(水)</th>
-                                <th colSpan={5}>4/20(木)</th>
-                                <th colSpan={5}>4/21(金)</th>
+                                <th colSpan={5}>{student === undefined ? "" : student.month1}/
+                                                {student === undefined ? "" :student.day1}
+                                                ({student === undefined ? "" :StudentData.getDayOfTheWeek(student.year1,student.month1,student.day1)})
+                                </th>
+                                <th colSpan={5}>{student === undefined ? "" : student.month2}/
+                                                {student === undefined ? "" :student.day2}
+                                                ({student === undefined ? "" :StudentData.getDayOfTheWeek(student.year2,student.month2,student.day2)})
+                                </th>
+                                <th colSpan={5}>{student === undefined ? "" : student.month3}/
+                                                {student === undefined ? "" :student.day3}
+                                                ({student === undefined ? "" :StudentData.getDayOfTheWeek(student.year3,student.month3,student.day3)})
+                                </th>
+                                <th colSpan={5}>{student === undefined ? "" : student.month4}/
+                                                {student === undefined ? "" :student.day4}
+                                                ({student === undefined ? "" :StudentData.getDayOfTheWeek(student.year4,student.month4,student.day4)})
+                                </th>
+                                <th colSpan={5}>{student === undefined ? "" : student.month5}/
+                                                {student === undefined ? "" :student.day5}
+                                                ({student === undefined ? "" :StudentData.getDayOfTheWeek(student.year5,student.month5,student.day5)})
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             {
                                 studentList === undefined ? <tr></tr> : studentList.map((studentList,i) => {
-                                    return <StudentListTable key={i} studentList={studentList} id_flag={i}/>
+                                    return <StudentListTable key={i} student={studentList}/>
                                 })
                             }
-                            <tr>
-                                <td>2</td>
-                                <td>吉原菊次</td>
-                                <td className="table-danger">80%</td>
-                                <td className="table-warning">1</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-danger">2</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-info">3</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-success">4</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                                <td className="table-primary">5</td>
-                            </tr>
                             </tbody>
                         </Table>
                     </Col>

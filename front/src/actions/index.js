@@ -10,6 +10,7 @@ export const LOAD_INITIALISE = 'LOAD_INITIALISE';
 export const LOAD_CONDEL = 'LOAD_CONDEL';
 export const LOAD_ALREADY = 'LOAD_ALREADY';
 export const LOAD_STUDENTLIST = 'LOAD_STUDENTLIST';
+export const RESET_STUDENTLIST = 'RESET_STUDENTLIST';
 
 const axiosBase = axios;
 const api = axiosBase.create({
@@ -93,12 +94,41 @@ function loadStudentList(json) {
 
 }
 
+function resetStudentList() {
+    return {
+        type: RESET_STUDENTLIST
+    };
+
+}
+
+//先生側生徒一覧画面を表示
+export function updateStudentList(week) {
+    return dispatch => {
+        dispatch(requestMessageState());
+        dispatch(resetStudentList());
+        return api.get(`showlist?classes=1`).then((response) => {
+            const list = response.data;
+            list.map( list => {
+                return api.get(`showweek?student_id=${list.student_id}&week=${week}`).then((response) => {
+                    dispatch(loadStudentList(response.data))
+                })
+            })
+        }).catch((response) => {
+            console.log(response)
+        });
+    }
+}
 //先生側生徒一覧画面を表示
 export function fetchStudentList(week) {
     return dispatch => {
         dispatch(requestMessageState());
-        return api.get(`showweek?classes=1&week=${week}`).then((response) => {
-            dispatch(loadStudentList(response.data));
+        return api.get(`showlist?classes=1`).then((response) => {
+            const list = response.data;
+            list.map( list => {
+                return api.get(`showweek?student_id=${list.student_id}&week=${week}`).then((response) => {
+                    dispatch(loadStudentList(response.data))
+                })
+            })
         }).catch((response) => {
             console.log(response)
         });
@@ -201,4 +231,5 @@ export function postMessage(messageBody) {
         })
     }
 }
+
 

@@ -1,7 +1,9 @@
 const initialState = {
+    studentList:[],
     condel: [{}],
     already: [{
-        apply_date: ""
+        apply_date: "",
+        req_date:""
     }],
     isFetching: false
 };
@@ -12,8 +14,12 @@ export default function teacher(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
-                studentList: action.messages
-
+                studentList: [...state.studentList, action.messages]
+            };
+        case 'RESET_STUDENTLIST':
+            return {
+                ...state,
+                studentList: []
             };
         case 'LOAD_CONDEL':
             return {

@@ -9,7 +9,7 @@ class TeacherviewController < ApplicationController
   
   while @x < User.count + 1
     if User.find(@x).classes == @classes.to_i && User.find(@x).grade == 4
-      @allmystudent << { 'student_id' + @y.to_s => User.find(@x).student_id}
+      @allmystudent << { 'student_id' => User.find(@x).student_id}
       @y += 1
     end
     @x += 1
@@ -18,7 +18,7 @@ class TeacherviewController < ApplicationController
   end
   
   def getweek
-    @test = []
+    @test = {}
     @student_id = params[:student_id]
     @week = params[:week]
     date =  Time.now.to_date
@@ -38,7 +38,7 @@ class TeacherviewController < ApplicationController
     end
     
     if Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")) != nil
-    @test << {'attendance_id' => User.find_by(student_id: @student_id).attendance_id,
+    @test = {'attendance_id' => User.find_by(student_id: @student_id).attendance_id,
               'name' => User.find_by(student_id: @student_id).name,
               'syueekiritu' => syusseki,
               'student_id' => User.find_by(student_id: @student_id).student_id,
