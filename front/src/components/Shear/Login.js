@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {Container, Row, Col, FormGroup, Label, Input, Button} from 'reactstrap'
 import {connect} from "react-redux";

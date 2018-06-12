@@ -23,16 +23,19 @@ export default function student(state = initialState, action) {
         case 'UPDATE_MONTH_SUCCESS':
             return {
                 ...state,
+                isFetching: false,
                 month: action.messages
             };
         case 'ADD_MESSAGE':
-            return Object.assign({}, state, {
-                // isFetching: true
-            });
+            return {
+                ...state,
+                isFetching: true
+            };
         case 'ADD_MESSAGE_SUCCESS':
-            return Object.assign({}, state, {
-                // isFetching: false,
-            });
+            return {
+                ...state,
+                isFetching: false
+            };
         default:
             return state;
     }

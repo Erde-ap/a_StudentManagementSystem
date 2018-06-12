@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import {Container, Row} from 'reactstrap'
 import FullCalendar from 'fullcalendar-reactwrapper';
-import '../../node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
+import '../../../node_modules/fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
 import Popup from 'react-popup'
-import '../../node_modules/react-popup/style.css'
+import '../../../node_modules/react-popup/style.css'
 import DayChangeForm from "./DayChangeForm"
-
 
 class DayChange extends Component{
     render(){
