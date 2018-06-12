@@ -49,16 +49,18 @@ class ConfirmationOfDeliveryController < ApplicationController
           @beilene = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI)
           # 前回の状態をベイレーンに保存（常識的に考えた結果欠席と遅刻を変えてもらうことが殆どだという結論から２と１の判断、優先順位としては２：欠席＞１：遅刻＞０：出席）
           # もしかしたら出席から欠席にしてもらいたがる変態がいるかもしれないので出席も入れている。こうけつ、病欠、就活は基本変更がない
-          if @beilene.pluck(:period1) == 2 or @beilene.pluck(:period2) == 2 or @beilene.pluck(:period3) == 2 or @beilene.pluck(:period4) == 2 or @beilene.pluck(:period5) == 2
+          if @beilene.pluck(:period1) == '2' or @beilene.pluck(:period2) == '2' or @beilene.pluck(:period3) == '2' or @beilene.pluck(:period4) == '2' or @beilene.pluck(:period5) == '2'
             beilene = 2
-          elsif @beilene.pluck(:period1) == 1 or @beilene.pluck(:period2) == 1 or @beilene.pluck(:period3) == 1 or @beilene.pluck(:period4) == 1 or @beilene.pluck(:period5) == 1
+          elsif @beilene.pluck(:period1) == '1' or @beilene.pluck(:period2) == '1' or @beilene.pluck(:period3) == '1' or @beilene.pluck(:period4) == '1' or @beilene.pluck(:period5) == '1'
             beilene = 1
           else
            beilene = 0
           end
 
+
+          beno = Date.today
           Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).update(period1:eilene1.join,period2:eilene2.join,period3:eilene3.join,period4:eilene4.join,period5:eilene5.join)
-          Request.where(id: @id).update(apply_state: true,before_state: beilene.to_int)
+          Request.where(id: @id).update(apply_state: true, before_state: beilene.to_int, apply_date: beno)
          render json: {'status' => 'データを更新しました'}
         else
           render json: @approval_state
