@@ -2,17 +2,17 @@ import React from 'react'
 import {Container, Row, Col, Table, Button} from 'reactstrap'
 import StudentListTable from './StudentListTable'
 
-const StudentListView = ({student,studentYear,onNextMonth,onPrevMonth}) => (
+const StudentListView = ({studentList,week,onNextWeek,onPrevWeek}) => (
             <Container>
                 <Row className="mt-100">
                     <Col lg={{size: 4, offset: 2}}>
                         <h1>4年1組の出席状況</h1>
                     </Col>
                     <Col lg={{size: 1, offset: 1}}>
-                        <Button color="primary" size="lg">＜</Button>
+                        <Button color="primary" size="lg" onClick={() => onPrevWeek(week)}>＜</Button>
                     </Col>
                     <Col lg={{size: 1}}>
-                        <Button color="primary" size="lg">＞</Button>
+                        <Button color="primary" size="lg" onClick={() => onNextWeek(week)}>＞</Button>
                     </Col>
                 </Row>
 
@@ -32,7 +32,11 @@ const StudentListView = ({student,studentYear,onNextMonth,onPrevMonth}) => (
                             </tr>
                             </thead>
                             <tbody>
-                            <StudentListTable/>
+                            {
+                                studentList === undefined ? <tr></tr> : studentList.map((studentList,i) => {
+                                    return <StudentListTable key={i} studentList={studentList} id_flag={i}/>
+                                })
+                            }
                             <tr>
                                 <td>2</td>
                                 <td>吉原菊次</td>

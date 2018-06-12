@@ -79,7 +79,7 @@ class TeacherviewController < ApplicationController
   
   while @x < User.count + 1
     if User.find(@x).classes == @classes.to_i && User.find(@x).attendance_id != 0
-      getdata
+      getdata2
     end
     @x += 1
   end

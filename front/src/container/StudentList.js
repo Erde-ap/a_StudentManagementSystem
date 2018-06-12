@@ -1,29 +1,29 @@
+import React from 'react';
 import {connect} from 'react-redux';
-import {StudentListView} from '../components/Teacher/StudentListView';
-import {onUpdateMonthState} from '../actions/index'
+import StudentListView from '../components/Teacher/StudentListView';
+import {onUpdateMonthState} from "../actions";
 
 const mapStateToProps = state => ({
-    student: {
+    studentList: state.teacher.studentList,
+    week: 0
 
-    }
 });
-
 const mapDispatchToProps = dispatch => ({
-    onNextMonth: (month) => {
+    onNextWeek: (week) => {
         console.log('Next');
-        month === 12 ? month = 1 : month++;
-        dispatch(onUpdateMonthState(month))
+        week++;
+        dispatch(onUpdateMonthState(week))
     },
-    onPrevMonth: (month) => {
+    onPrevWeek: (week) => {
         console.log('Prev');
-        month === 1 ? month = 12 : month--;
-        dispatch(onUpdateMonthState(month))
+        week--;
+        dispatch(onUpdateMonthState(week))
     }
 });
 
 const StudentList = connect(
     mapStateToProps,
     mapDispatchToProps
-)(StudentList);
+)(StudentListView);
 
 export default StudentList;

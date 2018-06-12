@@ -5,8 +5,8 @@ import Login from "./Login";
 import Student from "../../container/Student";
 import SendChange from "../Student/SendChange"
 import Top from "../Teacher/Top";
-import ChangeList from "../Teacher/ChangeList"
-import StudentListView from "../Teacher/StudentListView"
+import ChangeList from '../../container/ChangeList'
+import StudentList from "../../container/StudentList"
 import DayChange from "../Teacher/DayChange"
 
 class Main extends React.Component {
@@ -19,7 +19,7 @@ class Main extends React.Component {
                     <Route path="/student" component={Student}/>
                     <Route path="/top" component={Top}/>
                     <Route path="/changelist" component={ChangeList}/>
-                    <Route path="/studentlist" component={StudentListView}/>
+                    <Route path="/studentlist" component={StudentList}/>
                     <Route path="/daychange" component={DayChange}/>
                     <Route path="/change/:id/:date" component={SendChange}/>
                 </Switch>
