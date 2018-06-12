@@ -58,7 +58,7 @@ class ConfirmationOfDeliveryController < ApplicationController
           end
 
           Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).update(period1:eilene1.join,period2:eilene2.join,period3:eilene3.join,period4:eilene4.join,period5:eilene5.join)
-          Request.where(apply_state: true,before_state: beilene.to_int)
+          Request.where(id: @id).update(apply_state: true,before_state: beilene.to_int)
          render json: {'status' => 'データを更新しました'}
         else
           render json: @approval_state
