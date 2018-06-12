@@ -14,11 +14,11 @@ ActiveRecord::Schema.define(version: 2018_06_04_015422) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "student_id"
-    t.integer "period1", default: 8, null: false
-    t.integer "period2", default: 8, null: false
-    t.integer "period3", default: 8, null: false
-    t.integer "period4", default: 8, null: false
-    t.integer "period5", default: 8, null: false
+    t.integer "period1", default: 9, null: false
+    t.integer "period2", default: 9, null: false
+    t.integer "period3", default: 9, null: false
+    t.integer "period4", default: 9, null: false
+    t.integer "period5", default: 9, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "year"
