@@ -1,13 +1,11 @@
 class PasschangeController < ApplicationController
 
    protect_from_forgery except: :search
-   def passchange
-   json_request = JSON.parse(request.body.read)
+   def password_changer
 
-   @student_id = json_request["student_id"]
-   @password1 = json_request["password1"]
-   @password2 = json_request["password2"]
-   @status = ''
+   @student_id = params[:student_id]#json_request["student_id"]
+   @password1 = params[:first_password]#json_request["password1"]
+   @password2 = params[:second_password]#json_request["password2"]
    
    if @password1 == @password2
       if 6 <= @password1.length && @password1.length <= 10

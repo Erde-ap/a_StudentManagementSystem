@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../components/Header'
-import Main from "./Main";
+import Header from './Shear/Header'
+import Main from "./Shear/Main";
 
 const App = () => (
     <React.Fragment>

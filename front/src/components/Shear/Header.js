@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
-import {Nav, Navbar, NavbarBrand, NavItem, DropdownMenu, DropdownItem, DropdownToggle, UncontrolledDropdown} from 'reactstrap';
-import "../../node_modules/bootstrap/dist/css/bootstrap.css"
+import {
+    Nav,
+    Navbar,
+    NavbarBrand,
+    NavItem,
+    DropdownMenu,
+    DropdownItem,
+    DropdownToggle,
+    UncontrolledDropdown
+} from 'reactstrap';
+import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import {Link} from "react-router-dom";
 
 
@@ -20,13 +29,12 @@ class Header extends Component {
                             画面遷移
                         </DropdownToggle>
                         <DropdownMenu right>
-                            <DropdownItem ><Link to="/student">生徒画面</Link></DropdownItem>
-                            <DropdownItem ><Link to="/change">変更届け</Link></DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem ><Link to="/top">トップ</Link></DropdownItem>
-                            <DropdownItem ><Link to="/studentlist">生徒状況一覧</Link></DropdownItem>
-                            <DropdownItem ><Link to="/changelist">変更届け一覧</Link></DropdownItem>
-                        <DropdownItem><Link to="/daychange">出席日の変更</Link></DropdownItem>
+                            <Link to="/student"><DropdownItem>生徒画面</DropdownItem></Link>
+                            <DropdownItem divider/>
+                            <Link to="/top"><DropdownItem>トップ</DropdownItem></Link>
+                            <Link to="/studentlist"><DropdownItem>生徒状況一覧</DropdownItem></Link>
+                            <Link to="/changelist"><DropdownItem>変更届け一覧</DropdownItem></Link>
+                            <Link to="/daychange"><DropdownItem>出席日の変更</DropdownItem></Link>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </Nav>

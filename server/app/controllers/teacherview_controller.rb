@@ -7,20 +7,12 @@ class TeacherviewController < ApplicationController
   @day = Date.today
   
   while @x < User.count + 1
-    if User.find(@x).classes == @classes.to_i && User.find(@x).attendance_id != 0
-      @allmystudent << {'attendance_id' => findnumber, 'name' => findname, 'syussekiritu' => syusseki}
+    if User.find(@x).classes == @classes.to_i && User.find(@x).grade == 4
+      @allmystudent << {'attendance_id' => User.find(@x).attendance_id, 'name' => User.find(@x).name, 'syussekiritu' => syusseki}
     end
     @x += 1
   end 
     render json: @allmystudent
-  end
-  
-  def findnumber
-    return User.find(@x).attendance_id
-  end
-  
-  def findname
-    return  User.find(@x).name
   end
   
   def syusseki
@@ -33,35 +25,35 @@ class TeacherviewController < ApplicationController
       if data.period1 == 0 || data.period1 == 3 || data.period1 == 5
         count0 += 1
         count1 += 1
-      elsif data.period1 != 9
+      elsif data.period1 != 9 || data.period1 != 8 
         count1 += 1
       end
       
      if data.period2 == 0 || data.period2 == 3 || data.period2 == 5
         count0 += 1
         count1 += 1
-      elsif data.period2 != 9
+      elsif data.period2 != 9 || data.period2 != 8 
        count1 += 1
      end
      
     if data.period3 == 0 || data.period3 == 3 || data.period3 == 5
        count0 += 1
        count1 += 1
-     elsif data.period3 != 9
+     elsif data.period3 != 9 || data.period3 != 8 
       count1 += 1
     end
     
     if data.period4 == 0 || data.period4 == 3 || data.period4 == 5
       count0 += 1
       count1 += 1
-    elsif data.period4 != 9
+    elsif data.period4 != 9 || data.period4 != 8 
       count1 += 1
     end
     
     if data.period5 == 0 || data.period5 == 3 || data.period5 == 5
       count0 += 1
       count1 += 1
-    elsif data.period5 != 9
+    elsif data.period5 != 9 || data.period5 != 8 
       count1 += 1
     end
     
@@ -76,7 +68,6 @@ class TeacherviewController < ApplicationController
     else
       return (count0.to_f / count1.to_f * 100).round(0)
     end
-    
   end
   
   def getweek

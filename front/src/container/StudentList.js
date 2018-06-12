@@ -1,10 +1,11 @@
 import {connect} from 'react-redux';
-import StudentView from '../components/Student/StudentView';
+import {StudentListView} from '../components/Teacher/StudentListView';
 import {onUpdateMonthState} from '../actions/index'
 
 const mapStateToProps = state => ({
-    student: state.student.month,
-    studentYear: state.student.year
+    student: {
+
+    }
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,9 +21,9 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-const Student = connect(
+const StudentList = connect(
     mapStateToProps,
     mapDispatchToProps
-)(StudentView);
+)(StudentList);
 
-export default Student;
+export default StudentList;
