@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2018_06_04_015422) do
     t.boolean "approval_state"
     t.string "student_name"
     t.integer "before_state"
+    t.integer "period_start"
+    t.integer "period_end"
   end
 
   create_table "schedules", force: :cascade do |t|

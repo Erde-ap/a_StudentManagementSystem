@@ -46,19 +46,26 @@ class ConfirmationOfDeliveryController < ApplicationController
           eilene3 = Request.where(id: @id).pluck(:req_period3)
           eilene4 = Request.where(id: @id).pluck(:req_period4)
           eilene5 = Request.where(id: @id).pluck(:req_period5)
-          @beilene = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI)
-          # 前回の状態をベイレーンに保存（常識的に考えた結果欠席と遅刻を変えてもらうことが殆どだという結論から２と１の判断、優先順位としては２：欠席＞１：遅刻＞０：出席）
+          beilene = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI)
+          @sola1 = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).pluck(:period1)
+          @sola2 = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).pluck(:period2)
+          @sola3 = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).pluck(:period3)
+          @sola4 = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).pluck(:period4)
+          @sola5 = Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).pluck(:period5)
+
+              # 前回の状態をベイレーンに保存（常識的に考えた結果欠席と遅刻を変えてもらうことが殆どだという結論から２と１の判断、優先順位としては２：欠席＞１：遅刻＞０：出席）
           # もしかしたら出席から欠席にしてもらいたがる変態がいるかもしれないので出席も入れている。こうけつ、病欠、就活は基本変更がない
-          if @beilene.pluck(:period1) == '2' or @beilene.pluck(:period2) == '2' or @beilene.pluck(:period3) == '2' or @beilene.pluck(:period4) == '2' or @beilene.pluck(:period5) == '2'
+          if beilene.where(period1: @sola1) == '2' or beilene.where(period2: @sola2) == '2' or beilene.where(period3: @sola3) == '2' or beilene.where(period4: @sola4) == '2' or beilene.where(period5: @sola5) == '2'
             beilene = 2
-          elsif @beilene.pluck(:period1) == '1' or @beilene.pluck(:period2) == '1' or @beilene.pluck(:period3) == '1' or @beilene.pluck(:period4) == '1' or @beilene.pluck(:period5) == '1'
+          elsif beilene.where(period1: @sola1) == '1' or beilene.where(period2: @sola2) == '1' or beilene.where(period3: @sola3) == '1' or beilene.where(period4: @sola4) == '1' or beilene.where(period5: @sola5) == '1'
             beilene = 1
           else
            beilene = 0
           end
 
 
-          beno = Date.today
+          beno = Date.today.to_s
+          beno.gsub(/-/, ',')
           Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).update(period1:eilene1.join,period2:eilene2.join,period3:eilene3.join,period4:eilene4.join,period5:eilene5.join)
           Request.where(id: @id).update(apply_state: true, before_state: beilene.to_int, apply_date: beno)
          render json: {'status' => 'データを更新しました'}
