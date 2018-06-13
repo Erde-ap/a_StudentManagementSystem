@@ -46,23 +46,10 @@ class ConfirmationOfDeliveryController < ApplicationController
           eilene3 = Request.where(id: @id).pluck(:req_period3)
           eilene4 = Request.where(id: @id).pluck(:req_period4)
           eilene5 = Request.where(id: @id).pluck(:req_period5)
-          beilene = Request.where(id: @@id).pluck(:period_start)
-          if beilene == '1'
-            sola = Request.where(id: @id).pluck(period1)
-          elsif beilene == '2'
-            sola = Request.where(id: @id).pluck(period2)
-          elsif beilene == '3'
-            sola = Request.where(id: @id).pluck(period3)
-          elsif beilene == '4'
-            sola = Request.where(id: @id).pluck(period4)
-          else
-            sola = Request.where(id: @id).pluck(period5)
-          end
 
-          beno = Date.today.to_s
-          beno.gsub(/-/, ",")
+          beno = Date.today
           Attendance.where(student_id: @YOMEMI).where(month: @MOEMI).where(day: @AKARI).update(period1:eilene1.join,period2:eilene2.join,period3:eilene3.join,period4:eilene4.join,period5:eilene5.join)
-          Request.where(id: @id).update(apply_state: true, before_state: sola.to_int, apply_date: beno)
+          Request.where(id: @id).update(apply_state: true,  apply_date: beno)
          render json: {'status' => 'データを更新しました'}
         else
           render json: @approval_state
