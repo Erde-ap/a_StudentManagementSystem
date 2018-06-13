@@ -17,15 +17,15 @@ class AddDeliveryToDatabaseController < ApplicationController
     @per_end = params[:periodEnd]
     stid = User.where(student_id: @student_id).pluck(:name)
     if @per_start == '1'
-      state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period1)
+      @state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period1)
     elsif @per_start == '2'
-      state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period2)
+      @state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period2)
     elsif @per_start == '3'
-      state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period3)
+      @state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period3)
     elsif @per_start == '4'
-      state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period4)
+      @state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period4)
     else
-      state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period5)
+      @state = Attendance.where(year: @req_year).where(month: @req_month).where(day: @req_day).pluck(:period5)
     end
 
     @newdate = Request.new(student_id: @student_id,
@@ -46,7 +46,7 @@ class AddDeliveryToDatabaseController < ApplicationController
                            approval_state: false,
                            period_start: @per_start,
                            period_end: @per_end,
-                           before_state: state
+                           before_state: @state
     )
     @newdate.save!
       render json: @newdate#{'status'=> '申請完了！'}
