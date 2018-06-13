@@ -46,7 +46,7 @@ class AddDeliveryToDatabaseController < ApplicationController
                            approval_state: false,
                            period_start: @per_start,
                            period_end: @per_end,
-                           before_state: @state
+                           before_state: @state.to_i
     )
     @newdate.save!
       render json: @newdate#{'status'=> '申請完了！'}
