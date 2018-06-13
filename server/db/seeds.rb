@@ -26,93 +26,29 @@ User.create(student_id:1196500, attendance_id:1, password:'kH96rQaz', name:'麻�
 User.create(student_id:9900000, attendance_id:0, password:'r8FPkwev', name:'岡晋一', grade:0, classes:1, permission:2, state:false)
 User.create(student_id:9990000, attendance_id:0, password:'Pkgkme7e', name:'江口良一', grade:0, classes:1, permission:2, state:false)
 
-#request作成(先頭のみわかりやすく改行)
-# Request.create(
-#     student_id:1196500,
-#     student_name:'有馬敏伸',
-#     req_year:2018,
-#     req_month:5,
-#     req_day:8,
-#     req_type:0,
-#     reason:'この日は出席していました。変更おねがいします。',
-#     req_date:'2018,05,08',
-#     apply_state:false,
-#     req_period1:0,
-#     req_period2:0,
-#     req_period3:0,
-#     req_period4:0,
-#     req_period5:0,
-# )
-# Request.create(
-#     student_id:1196513,
-#     student_name:'藤村千代',
-#     req_year:2018,
-#     req_month:5,
-#     req_day:8,
-#     req_type:2,
-#     reason:'風邪を引いていたので出席していません',
-#     req_date:'2018,05,09',
-#     apply_state:false,
-#     req_period1:2,
-#     req_period2:2,
-#     req_period3:2,
-#     req_period4:2,
-#     req_period5:2,
-#     )
-# Request.create(
-#     student_id:1196506,
-#     student_name:'加藤哲朗',
-#     req_year:2018,
-#     req_month:5,
-#     req_day:9,
-#     req_type:1,
-#     reason:'欠席じゃなくて遅刻です',
-#     req_date:'2018,05,10',
-#     apply_state:false,
-#     req_period1:1,
-#     req_period2:2,
-#     req_period3:2,
-#     req_period4:2,
-#     req_period5:2,
-#     )
-# Request.create(
-#     student_id:1196500,
-#     student_name:'有馬敏伸',
-#     req_year:2018,
-#     req_month:5,
-#     req_day:4,
-#     req_type:0,
-#     reason:'その日は出席していました。変更をおねがいします。',
-#     req_date:'2018,05,04',
-#     apply_state:true,
-#     req_period1:2,
-#     req_period2:2,
-#     req_period3:2,
-#     req_period4:2,
-#     req_period5:2,
-#     approval_state:true,
-#     apply_date:'2018,05,07',
-#     before_state: 2
-# )
-# Request.create(
-#     student_id:1196506,
-#     student_name:'加藤哲朗',
-#     req_year:2018,
-#     req_month:5,
-#     req_day:5,
-#     req_type:0,
-#     reason:'出席が終わる頃にはいました。これはギリギリで出席になるはずです。変更をおねがいします。',
-#     req_date:'2018,05,05',
-#     apply_state:true,
-#     req_period1:1,
-#     req_period2:2,
-#     req_period3:2,
-#     req_period4:2,
-#     req_period5:2,
-#     approval_state:false,
-#     apply_date:'2018,05,07',
-#     before_state: 2
-# )
+# request作成(先頭のみわかりやすく改行)
+Request.create(
+    student_id:1196500,
+    student_name:'有馬敏伸',
+    req_year:2018,
+    req_month:5,
+    req_day:8,
+    req_type:0,
+    reason:'この日は出席していました。変更おねがいします。',
+    req_date:'2018-05-08',
+    apply_state:false,
+    req_period1:0,
+    req_period2:0,
+    req_period3:0,
+    req_period4:0,
+    req_period5:0,
+    period_start:1,
+    period_end:5,
+    before_state:1,
+    apply_date:'2018-06-01',
+    approval_state: nil,
+)
+
 #attendances作成(先頭のみわかりやすく改行)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.01,14,50', period1:9, period2:9, period3:9, period4:9, period5:9, year:2018, month:4, day:1)
 Attendance.create(student_id:1196500, yyyy_mm_dd_hh_mm:'2018,04.02,14,50', period1:0, period2:0, period3:0, period4:0, period5:0, year:2018, month:4, day:2)
