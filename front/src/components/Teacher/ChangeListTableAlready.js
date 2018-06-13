@@ -6,11 +6,12 @@ let ChangeListTableAlready = props => {
     const {already, approval,reqType} = props;
     return (
         <tr>
-            <td className="text-nowrap">{already.apply_date === null ?  "" : already.apply_date.replace(/,/g,'/')}</td>
+            <td className="text-nowrap">{already.apply_date === null ?  "" : already.apply_date.replace(/,/g,'/')} {already.period_start
+            }限から{already.period_end}限</td>
             <td className="text-nowrap">{already.student_name}</td>
             <td className="text-nowrap">{reqType(already.before_state)}</td>
             <td className="text-nowrap">{reqType(already.req_type)}</td>
-            <td className="text-nowrap">{already.req_date === null ?  "" : already.req_date.replace(/,/g,'/')}</td>
+            <td className="text-nowrap">{already.req_date === null ?  "" : already.req_date.replace(/,/g,'-')}</td>
             <td className="text-left">{already.reason}</td>
             {approval(already.approval_state)}
         </tr>

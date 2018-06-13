@@ -4,19 +4,21 @@ import {updateStudentList} from "../actions";
 
 const mapStateToProps = state => ({
     studentList: desc_array(state.teacher.studentList,"attendance_id"),
-    student:state.teacher.studentList[0],
-    week: 0
+    student:state.teacher.studentList[0]
 
 });
+let week = 0;
 const mapDispatchToProps = dispatch => ({
-    onNextWeek: (week) => {
+    onNextWeek: () => {
         console.log('Next');
         week++;
+        console.log(week)
         dispatch(updateStudentList(week))
     },
-    onPrevWeek: (week) => {
+    onPrevWeek: () => {
         console.log('Prev');
         week--;
+        console.log(week)
         dispatch(updateStudentList(week))
     }
 });
