@@ -8,8 +8,8 @@ const ChangeListTableCondel = ({condel,onApprovalState}) => (
         <tr>
             <td className="align-middle text-nowrap">{condel.id}</td>
             <td className="align-middle text-nowrap">{condel.student_name}</td>
-            <td className="align-middle text-nowrap">現状</td>
-            <td className="align-middle text-nowrap">変更</td>
+            <td className="align-middle text-nowrap">{condel.beforestate}</td>
+            <td className="align-middle text-nowrap">{condel.req_type}</td>
             <td className="align-middle text-nowrap">2018/05/28 1~4限</td>
             <td className="align-middle text-left  text-nowrap">{condel.reason}</td>
             <td><Button color="primary" size="sm"
