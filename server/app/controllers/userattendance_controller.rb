@@ -58,13 +58,16 @@ class UserattendanceController < ApplicationController
       @a9 = @a9 + Attendance.where(student_id: @studentId).where(month: @month).where(period3: 9).count
       @a9 = @a9 + Attendance.where(student_id: @studentId).where(month: @month).where(period4: 9).count
       @a9 = @a9 + Attendance.where(student_id: @studentId).where(month: @month).where(period5: 9).count
-
+      # 全体日
       @a012345 = @a0 + @a1 + @a2 + @a3 + @a4 + @a5
-      @a04 = @a0 + @a4
+      # 出席日
+      @a035 = @a0 + @a5 + @a3
+      # 遅刻1/3
       @a1_3 = @a1 / 3
-      @a0a1_3a4 = @a04 + @a1_3
-      @a012345_m_a1a2_3a4 = @a012345 - @a0a1_3a4
-      @last = @a012345_m_a1a2_3a4 / @a012345.to_f * 100
+
+      @a0a1_3a4 = @a035 + @a1_3
+      # @a012345_m_a1a2_3a4 = @a012345 - @a0a1_3a4
+      @last = @a0a1_3a4 / @a012345.to_f * 100
       if @month == 1
         if @a9 + @a8 >= 150
           @last1 = 0

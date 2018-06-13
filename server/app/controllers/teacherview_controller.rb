@@ -2,24 +2,97 @@ class TeacherviewController < ApplicationController
   def showtime
   #データを受け取れる場合は以下２つの前の数字を消してコメントアウトしているparms[]を有効に
   @x = 1
+  @y = 1
   @allmystudent = []
   @classes = params[:classes]
   @day = Date.today
   
   while @x < User.count + 1
     if User.find(@x).classes == @classes.to_i && User.find(@x).grade == 4
-      @allmystudent << {'attendance_id' => User.find(@x).attendance_id, 'name' => User.find(@x).name, 'syussekiritu' => syusseki}
+      @allmystudent << { 'student_id' => User.find(@x).student_id}
+      @y += 1
     end
     @x += 1
   end 
     render json: @allmystudent
   end
   
+  def getweek
+    @test = {}
+    @student_id = params[:student_id]
+    @week = params[:week]
+    date =  Time.now.to_date
+    date = date + @week.to_i * 7
+    if date.strftime('%w') == "0"
+      date = date + 1
+    elsif date.strftime('%w') == "2"
+      date = date - 1
+    elsif date.strftime('%w') == "3"
+      date = date - 2
+    elsif date.strftime('%w') == "4"
+      date = date - 3
+    elsif date.strftime('%w') == "5"
+      date = date - 4
+    elsif date.strftime('%w') == "6"
+      date = date - 5
+    end
+    
+    if Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")) != nil
+    @test = {'attendance_id' => User.find_by(student_id: @student_id).attendance_id,
+              'name' => User.find_by(student_id: @student_id).name,
+              'syueekiritu' => syusseki,
+              'student_id' => User.find_by(student_id: @student_id).student_id,
+              'day1_period1' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period1,
+              'day1_period2' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period2,
+              'day1_period3' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period3,
+              'day1_period4' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period4,
+              'day1_period5' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period5,
+              'year1' => date.strftime("%Y"),
+              'month1' => date.strftime("%m"),
+              'day1' => date.strftime("%d"),
+              'day2_period1' => Attendance.find_by(student_id: @student_id, year: (date+1).strftime("%Y"), month: (date+1).strftime("%m"), day: (date+1).strftime("%d")).period1,
+              'day2_period2' => Attendance.find_by(student_id: @student_id, year: (date+1).strftime("%Y"), month: (date+1).strftime("%m"), day: (date+1).strftime("%d")).period2,
+              'day2_period3' => Attendance.find_by(student_id: @student_id, year: (date+1).strftime("%Y"), month: (date+1).strftime("%m"), day: (date+1).strftime("%d")).period3,
+              'day2_period4' => Attendance.find_by(student_id: @student_id, year: (date+1).strftime("%Y"), month: (date+1).strftime("%m"), day: (date+1).strftime("%d")).period4,
+              'day2_period5' => Attendance.find_by(student_id: @student_id, year: (date+1).strftime("%Y"), month: (date+1).strftime("%m"), day: (date+1).strftime("%d")).period5,
+              'year2' => (date+1).strftime("%Y"),
+              'month2' =>(date+1).strftime("%m"),
+              'day2' => (date+1).strftime("%d"),
+              'day3_period1' => Attendance.find_by(student_id: @student_id, year: (date+2).strftime("%Y"), month: (date+2).strftime("%m"), day: (date+2).strftime("%d")).period1,
+              'day3_period2' => Attendance.find_by(student_id: @student_id, year: (date+2).strftime("%Y"), month: (date+2).strftime("%m"), day: (date+2).strftime("%d")).period2,
+              'day3_period3' => Attendance.find_by(student_id: @student_id, year: (date+2).strftime("%Y"), month: (date+2).strftime("%m"), day: (date+2).strftime("%d")).period3,
+              'day3_period4' => Attendance.find_by(student_id: @student_id, year: (date+2).strftime("%Y"), month: (date+2).strftime("%m"), day: (date+2).strftime("%d")).period4,
+              'day3_period5' => Attendance.find_by(student_id: @student_id, year: (date+2).strftime("%Y"), month: (date+2).strftime("%m"), day: (date+2).strftime("%d")).period5,
+              'year3' => (date+2).strftime("%Y"),
+              'month3' =>(date+2).strftime("%m"),
+              'day3' => (date+2).strftime("%d"),
+              'day4_period1' => Attendance.find_by(student_id: @student_id, year: (date+3).strftime("%Y"), month: (date+3).strftime("%m"), day: (date+3).strftime("%d")).period1,
+              'day4_period2' => Attendance.find_by(student_id: @student_id, year: (date+3).strftime("%Y"), month: (date+3).strftime("%m"), day: (date+3).strftime("%d")).period2,
+              'day4_period3' => Attendance.find_by(student_id: @student_id, year: (date+3).strftime("%Y"), month: (date+3).strftime("%m"), day: (date+3).strftime("%d")).period3,
+              'day4_period4' => Attendance.find_by(student_id: @student_id, year: (date+3).strftime("%Y"), month: (date+3).strftime("%m"), day: (date+3).strftime("%d")).period4,
+              'day4_period5' => Attendance.find_by(student_id: @student_id, year: (date+3).strftime("%Y"), month: (date+3).strftime("%m"), day: (date+3).strftime("%d")).period5,
+              'year4' => (date+3).strftime("%Y"),
+              'month4' =>(date+3).strftime("%m"),
+              'day4' => (date+3).strftime("%d"),
+              'day5_period1' => Attendance.find_by(student_id: @student_id, year: (date+4).strftime("%Y"), month: (date+4).strftime("%m"), day: (date+4).strftime("%d")).period1,
+              'day5_period2' => Attendance.find_by(student_id: @student_id, year: (date+4).strftime("%Y"), month: (date+4).strftime("%m"), day: (date+4).strftime("%d")).period2,
+              'day5_period3' => Attendance.find_by(student_id: @student_id, year: (date+4).strftime("%Y"), month: (date+4).strftime("%m"), day: (date+4).strftime("%d")).period3,
+              'day5_period4' => Attendance.find_by(student_id: @student_id, year: (date+4).strftime("%Y"), month: (date+4).strftime("%m"), day: (date+4).strftime("%d")).period4,
+              'day5_period5' => Attendance.find_by(student_id: @student_id, year: (date+4).strftime("%Y"), month: (date+4).strftime("%m"), day: (date+4).strftime("%d")).period5,
+              'year5' => (date+4).strftime("%Y"),
+              'month5' =>(date+4).strftime("%m"),
+              'day5' => (date+4).strftime("%d")
+    }
+  end
+  
+    render json: @test
+    end
+    
   def syusseki
     count0 = 0
     count1 = 0
-    y = Attendance.find_by(student_id: User.find(@x).student_id).id
-    while User.find(@x).student_id == Attendance.find(y).student_id
+    y = Attendance.find_by(student_id: @student_id.to_i).id
+    while @student_id.to_i == Attendance.find(y).student_id
         data = Attendance.find(y)
       
       if data.period1 == 0 || data.period1 == 3 || data.period1 == 5
@@ -69,74 +142,4 @@ class TeacherviewController < ApplicationController
       return (count0.to_f / count1.to_f * 100).round(0)
     end
   end
-  
-  def getweek
-  @x = 1
-  @test = []
-  @classes = params[:classes]
-  @month = params[:month]
-  @week = params[:week]
-  
-  while @x < User.count + 1
-    if User.find(@x).classes == @classes.to_i && User.find(@x).attendance_id != 0
-      getdata
-    end
-    @x += 1
-  end
-  
-  render json: @test
-  end
-  
-  def getdata
-    y = Attendance.find_by(student_id: User.find(@x).student_id, month: @month).id
-    while Attendance.find(y).month == @month.to_i
-      @test << {'student_id' => User.find(@x).student_id,
-                'period1' => Attendance.find(y).period1,
-                'period2' => Attendance.find(y).period2,
-                'period3' => Attendance.find(y).period3,
-                'period4' => Attendance.find(y).period4,
-                'period5' => Attendance.find(y).period5,
-                'year' => Attendance.find(y).year,
-                'month' => Attendance.find(y).month,
-                'day' => Attendance.find(y).day}
-    y += 1
-    end
-  end
-
-  def getdata2
-    date =  Time.now.to_date
-    date = date + @week.to_i * 7
-    if date.strftime('%w') == "0"
-      date = date + 1
-    elsif date.strftime('%w') == "2"
-      date = date - 1
-    elsif date.strftime('%w') == "3"
-      date = date - 2
-    elsif date.strftime('%w') == "4"
-      date = date - 3
-    elsif date.strftime('%w') == "5"
-      date = date - 4
-    elsif date.strftime('%w') == "6"
-      date = date - 5
-    end
-    
-    if Attendance.find_by(student_id: User.find(@x).student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")) != nil
-    
-    y = Attendance.find_by(student_id: User.find(@x).student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).id
-      5.times do
-      @test << {'student_id' => User.find(@x).student_id,
-                'period1' => Attendance.find(y).period1,
-                'period2' => Attendance.find(y).period2,
-                'period3' => Attendance.find(y).period3,
-                'period4' => Attendance.find(y).period4,
-                'period5' => Attendance.find(y).period5,
-                'year' => Attendance.find(y).year,
-                'month' => Attendance.find(y).month,
-                'day' => Attendance.find(y).day}
-      y+=1
-    end
-    end
-      
-  end
-  
 end

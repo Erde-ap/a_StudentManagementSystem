@@ -5,7 +5,13 @@ import {BrowserRouter} from "react-router-dom";
 import "./app.css";
 import configureStore from './store/'
 import App from './components/App';
-import {fetchYearState, fetchMonthState} from './actions/index'
+import {
+    fetchYearState,
+    fetchMonthState,
+    fetchCondel,
+    fetchAlready,
+    fetchStudentList
+} from './actions/index'
 
 const store = configureStore();
 
@@ -20,11 +26,12 @@ render(
 );
 
 
-
 //Storeの中身をサーバーから問い合わせ
 store.dispatch(fetchMonthState(5));
 store.dispatch(fetchYearState());
-
+store.dispatch(fetchCondel());
+store.dispatch(fetchAlready());
+store.dispatch(fetchStudentList(0));
 
 
 //Storeの中身をコンソールに表示

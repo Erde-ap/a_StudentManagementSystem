@@ -1,3 +1,4 @@
+
 const initialState = {};
 
 export default function initialValues(state = initialState, action) {
@@ -10,4 +11,3 @@ export default function initialValues(state = initialState, action) {
             return state;
     }
 }
-
