@@ -7,6 +7,10 @@ export const UPDATE_MONTH_SUCCESS = 'UPDATE_MONTH_SUCCESS';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
 export const LOAD_INITIALISE = 'LOAD_INITIALISE';
+export const LOAD_CONDEL = 'LOAD_CONDEL';
+export const LOAD_ALREADY = 'LOAD_ALREADY';
+export const LOAD_STUDENTLIST = 'LOAD_STUDENTLIST';
+export const RESET_STUDENTLIST = 'RESET_STUDENTLIST';
 
 const axiosBase = axios;
 const api = axiosBase.create({
@@ -67,6 +71,111 @@ function addNewMessageSuccess() {
         type: ADD_MESSAGE_SUCCESS,
     };
 }
+
+function loadCondel(json) {
+    return {
+        type: LOAD_CONDEL,
+        messages: json
+    };
+}
+
+function loadAlready(json) {
+    return {
+        type: LOAD_ALREADY,
+        messages: json
+    };
+}
+
+function loadStudentList(json) {
+    return {
+        type: LOAD_STUDENTLIST,
+        messages: json
+    };
+
+}
+
+function resetStudentList() {
+    return {
+        type: RESET_STUDENTLIST
+    };
+
+}
+
+//先生側生徒一覧画面を表示
+export function updateStudentList(week) {
+    return dispatch => {
+        dispatch(requestMessageState());
+        dispatch(resetStudentList());
+        return api.get(`showlist?classes=1`).then((response) => {
+            const list = response.data;
+            list.map( list => {
+                return api.get(`showweek?student_id=${list.student_id}&week=${week}`).then((response) => {
+                    dispatch(loadStudentList(response.data))
+                })
+            })
+        }).catch((response) => {
+            console.log(response)
+        });
+    }
+}
+//先生側生徒一覧画面を表示
+export function fetchStudentList(week) {
+    return dispatch => {
+        dispatch(requestMessageState());
+        return api.get(`showlist?classes=1`).then((response) => {
+            const list = response.data;
+            list.map( list => {
+                return api.get(`showweek?student_id=${list.student_id}&week=${week}`).then((response) => {
+                    dispatch(loadStudentList(response.data))
+                })
+            })
+        }).catch((response) => {
+            console.log(response)
+        });
+    }
+}
+
+// 変更届けの承認、未承認の変更
+export function onUpdateApprovalState(id,flag){
+    return dispatch => {
+        dispatch(addNewMessage());
+        return api.get(`checkpost?id=${id}&student_id=9990000&approval_state=${flag}`
+        ).then((response) => {
+            console.log('送信成功');
+            dispatch(fetchCondel());
+            dispatch(fetchAlready());
+            dispatch(addNewMessageSuccess());
+        }).catch((response) => {
+            console.log('送信失敗');
+            dispatch(addNewMessageSuccess());
+        })
+    }
+}
+
+// 変更届け一覧の情報取得(未読)
+export function fetchCondel() {
+    return dispatch => {
+        dispatch(requestMessageState());
+        return api.get(`condel?student_id=9900000`).then((response) => {
+            dispatch(loadCondel(response.data));
+        }).catch((response) => {
+            console.log(response)
+        });
+    }
+}
+
+//変更届け一覧の情報取得(履歴)
+export function fetchAlready() {
+    return dispatch => {
+        dispatch(requestMessageState());
+        return api.get(`already?student_id=9900000`).then((response) => {
+            dispatch(loadAlready(response.data));
+        }).catch((response) => {
+            console.log(response)
+        });
+    }
+}
+
 // メッセージ取得
 export function fetchMonthState(month) {
     return dispatch => {
@@ -122,3 +231,5 @@ export function postMessage(messageBody) {
         })
     }
 }
+
+

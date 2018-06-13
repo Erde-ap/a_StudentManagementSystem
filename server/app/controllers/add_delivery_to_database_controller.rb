@@ -13,6 +13,8 @@ class AddDeliveryToDatabaseController < ApplicationController
     @req_period3 = params[:period3]
     @req_period4 = params[:period4]
     @req_period5 = params[:period5]
+    @per_start = params[:periodStart]
+    @per_end = params[:periodEnd]
     stid = User.where(student_id: @student_id).pluck(:name)
 
     @newdate = Request.new(student_id: @student_id,
@@ -30,7 +32,10 @@ class AddDeliveryToDatabaseController < ApplicationController
                            req_period4:@req_period4,
                            req_period5:@req_period5,
                            apply_date: nil,
-                           approval_state: false
+                           approval_state: false,
+                          period_start: @per_start,
+                           period_end: @per_end
+
     )
     @newdate.save!
       render json: @newdate#{'status'=> '申請完了！'}

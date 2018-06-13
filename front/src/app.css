@@ -16,3 +16,9 @@ table{
 .none{
     background: linear-gradient(-40deg, #fff, #fff 48.5%, #c5c5c5 49.5%, #c5c5c5 50.5%, #fff 51.5%, #fff);
 }
+.text-left{
+    text-align: left;
+}
+.text-nowrap{
+    white-space: nowrap;
+}
