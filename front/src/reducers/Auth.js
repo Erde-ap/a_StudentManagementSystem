@@ -1,7 +1,8 @@
 
 const initialState = {
     isLogin: false,
-    token:""
+    token:"",
+    serverMessage:""
 };
 
 export default function auth(state = initialState, action) {
@@ -11,6 +12,16 @@ export default function auth(state = initialState, action) {
                 ...state,
                 isLogin: action.data,
                 token:action.token.session
+            };
+        case 'FIRST_LOGIN':
+            return {
+                ...state,
+                isFirstLogin:true
+            };
+        case 'CHANGE_PASSWORD':
+            return {
+                ...state,
+                serverMessage:action.data
             };
         default:
             return state;

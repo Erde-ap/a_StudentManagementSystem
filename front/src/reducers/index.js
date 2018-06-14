@@ -4,6 +4,7 @@ import teacher from './Teacher'
 import auth from './Auth'
 import { default as sendChange} from './SendChange'
 import { reducer as formReducer } from 'redux-form'
+import {routerReducer } from 'react-router-redux'
 
 
 const reducers = combineReducers({
@@ -11,6 +12,7 @@ const reducers = combineReducers({
     teacher,
     sendChange,
     auth,
+    router:routerReducer,
     form: formReducer
 });
 

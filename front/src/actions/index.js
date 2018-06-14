@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {push} from "react-router-redux";
 
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export const MONTH_SUCCESS = 'MONTH_SUCCESS';
@@ -12,6 +13,7 @@ export const LOAD_ALREADY = 'LOAD_ALREADY';
 export const LOAD_STUDENTLIST = 'LOAD_STUDENTLIST';
 export const RESET_STUDENTLIST = 'RESET_STUDENTLIST';
 export const LOGIN_AUTH= 'LOGIN_AUTH';
+export const FIRST_LOGIN = 'FIRST_LOGIN';
 
 const axiosBase = axios;
 const api = axiosBase.create({
@@ -107,6 +109,12 @@ function loginAuth(token,bool) {
         type: LOGIN_AUTH,
         data: bool,
         token:token
+    }
+}
+
+function firstLogin() {
+    return {
+        type: FIRST_LOGIN
     }
 }
 
@@ -251,9 +259,30 @@ export function loginAuthPost(messageBody) {
             console.log('送信成功');
             console.log(response);
             response.data.session === null ? dispatch(loginAuth(response.data,false)) : dispatch(loginAuth(response.data,true));
+            dispatch(checkFirstLogin(true))
         }).catch((response) => {
             console.log('送信失敗');
-            dispatch(loginAuth(response.data,false));
+            dispatch(loginAuth('',false));
         })
     }
 }
+
+function checkFirstLogin(isFirst) {
+    return dispatch => {
+        return isFirst ? dispatch(push('/first')) : dispatch(push('/student'))
+    }
+}
+
+export  function changePasswordPost(messageBody) {
+    console.log(messageBody)
+    return dispatch => {
+        return api.post('passchange', messageBody
+        ).then((response) => {
+            console.log('送信成功');
+            console.log(response);
+        }).catch((response) => {
+            console.log('送信失敗');
+        })
+    }
+}
+
