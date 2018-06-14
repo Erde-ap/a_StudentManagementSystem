@@ -7,7 +7,7 @@ class DayChangeForm extends Component {
             <Form>
                 <FormGroup tag="fieldset">
                     <legend><h3 className="text-center">出席日変更</h3></legend>
-                    <Input type="date" name="date" id="dateId" value=""/>
+                    <Input type="date" name="date" id="dateId" value="date"/>
                     <FormGroup check>
                         <Label check>
                             <Input type="radio" name="radio1"/>{' '}
