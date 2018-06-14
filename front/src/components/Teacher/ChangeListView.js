@@ -15,7 +15,6 @@ const ChangeListView = ({condel,already}) => (
                     <Table className="table-bordered">
                         <tbody>
                         <tr>
-                            <th>番号</th>
                             <th>氏名</th>
                             <th>現状</th>
                             <th>変更</th>

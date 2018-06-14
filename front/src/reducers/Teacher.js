@@ -1,6 +1,9 @@
 const initialState = {
     studentList:[],
-    condel: [{}],
+    condel: [{
+        apply_date: "",
+        req_date:""
+    }],
     already: [{
         apply_date: "",
         req_date:""
