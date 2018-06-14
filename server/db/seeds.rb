@@ -8,6 +8,7 @@
 #User作成(先頭のみわかりやすく改行)
 # 2回目以降rails db:seedを行う場合は先にrails db:migrate:resetを行うこと
 
+User.create(student_id:100, attendance_id:100, password:'test', name:'飯塚大地', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196501, attendance_id:2, password:'e7MdK3Lz', name:'有馬敏伸', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196502, attendance_id:3, password:'W9q8zLei', name:'依田孝子', grade:4, classes:1, permission:0, state:false)
 User.create(student_id:1196503, attendance_id:4, password:'t8FZmAnH', name:'岩田莉子', grade:4, classes:1, permission:0, state:false)

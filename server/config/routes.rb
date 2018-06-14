@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   #
   post '/changepost',to: 'add_delivery_to_database#create'
   # ログインのセッション管理
-  post 'selo',to: 'sessions#index'
+  post '/selo',to: 'sessions#index'
   #
   post '/passchange',to: 'passchange#password_changer'
 end

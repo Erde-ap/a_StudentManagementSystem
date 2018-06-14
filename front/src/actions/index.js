@@ -11,6 +11,7 @@ export const LOAD_CONDEL = 'LOAD_CONDEL';
 export const LOAD_ALREADY = 'LOAD_ALREADY';
 export const LOAD_STUDENTLIST = 'LOAD_STUDENTLIST';
 export const RESET_STUDENTLIST = 'RESET_STUDENTLIST';
+export const LOGIN_AUTH= 'LOGIN_AUTH';
 
 const axiosBase = axios;
 const api = axiosBase.create({
@@ -101,6 +102,15 @@ function resetStudentList() {
 
 }
 
+function loginAuth(token,bool) {
+    return {
+        type: LOGIN_AUTH,
+        data: bool,
+        token:token
+    }
+}
+
+
 //先生側生徒一覧画面を表示
 export function updateStudentList(week) {
     return dispatch => {
@@ -108,7 +118,7 @@ export function updateStudentList(week) {
         dispatch(resetStudentList());
         return api.get(`showlist?classes=1`).then((response) => {
             const list = response.data;
-            list.map( list => {
+            list.map(list => {
                 return api.get(`showweek?student_id=${list.student_id}&week=${week}`).then((response) => {
                     dispatch(loadStudentList(response.data))
                 })
@@ -118,13 +128,14 @@ export function updateStudentList(week) {
         });
     }
 }
+
 //先生側生徒一覧画面を表示
 export function fetchStudentList(week) {
     return dispatch => {
         dispatch(requestMessageState());
         return api.get(`showlist?classes=1`).then((response) => {
             const list = response.data;
-            list.map( list => {
+            list.map(list => {
                 return api.get(`showweek?student_id=${list.student_id}&week=${week}`).then((response) => {
                     dispatch(loadStudentList(response.data))
                 })
@@ -136,7 +147,7 @@ export function fetchStudentList(week) {
 }
 
 // 変更届けの承認、未承認の変更
-export function onUpdateApprovalState(id,flag){
+export function onUpdateApprovalState(id, flag) {
     return dispatch => {
         dispatch(addNewMessage());
         return api.get(`checkpost?id=${id}&student_id=9990000&approval_state=${flag}`
@@ -221,7 +232,7 @@ export function fetchYearState() {
 export function postMessage(messageBody) {
     return dispatch => {
         dispatch(addNewMessage());
-        return api.post('changepost',messageBody
+        return api.post('changepost', messageBody
         ).then((response) => {
             console.log('送信成功');
             dispatch(addNewMessageSuccess());
@@ -232,4 +243,17 @@ export function postMessage(messageBody) {
     }
 }
 
-
+export function loginAuthPost(messageBody) {
+    console.log(messageBody)
+    return dispatch => {
+        return api.post('selo', messageBody
+        ).then((response) => {
+            console.log('送信成功');
+            console.log(response);
+            response.data.session === null ? dispatch(loginAuth(response.data,false)) : dispatch(loginAuth(response.data,true));
+        }).catch((response) => {
+            console.log('送信失敗');
+            dispatch(loginAuth(response.data,false));
+        })
+    }
+}
