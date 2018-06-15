@@ -1,9 +1,6 @@
-import React from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import {BrowserRouter} from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
 import "./app.css";
-import configureStore from './store/'
 import App from './components/App';
 import {
     fetchYearState,
@@ -12,19 +9,39 @@ import {
     fetchAlready,
     fetchStudentList
 } from './actions/index'
+import thunk from 'redux-thunk';
+import reducers from './reducers'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import createHistory from 'history/createBrowserHistory'
+import { Switch } from 'react-router'
+import {connect} from "react-redux";
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 
-const store = configureStore();
 
+const history = createHistory();
+const middleware = [
+    routerMiddleware(history),
+    thunk];
+const store = createStore(
+    reducers,
+    applyMiddleware(...middleware)
+);
 
-render(
+const ConnectedSwitch = connect(state => ({
+    location: state.router.location
+}))(Switch);
+
+ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
+        <ConnectedRouter history={history}>
+            <ConnectedSwitch>
+                <App/>
+            </ConnectedSwitch>
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 );
-
 
 //Storeの中身をサーバーから問い合わせ
 store.dispatch(fetchMonthState(5));
