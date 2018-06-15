@@ -2,9 +2,11 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {Container, Row, Col, FormGroup, Label, Input, Button} from 'reactstrap'
 import {connect} from "react-redux";
+import {loginAuthPost}from'../../actions'
+import {Redirect} from  'react-router-dom';
 
-let Login = ({handleSubmit, onSubmit, isFetching}) => {
-    return (
+let Login = ({handleSubmit, onSubmit,isLogin}) => {
+    return isLogin ? (<Redirect to='/student' />) : (
         <Container>
             <Row className="mt-80">
                 <Col lg={{size: 4, offset: 4}}>
@@ -15,7 +17,7 @@ let Login = ({handleSubmit, onSubmit, isFetching}) => {
                 <FormGroup row className="mt-30">
                     <Label for="exampleDate" lg={{size: 4, offset: 4}}>学籍番号</Label>
                     <Col lg={{size: 4, offset: 4}}>
-                        <Input tag={Field} name="studentId" component="input"/>
+                        <Input tag={Field} name="student_id" component="input"/>
                     </Col>
                     <Label for="exampleDate" lg={{size: 4, offset: 4}}>パスワード</Label>
                     <Col lg={{size: 4, offset: 4}}>
@@ -34,15 +36,14 @@ let Login = ({handleSubmit, onSubmit, isFetching}) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isFetching: state.student.isFetching
+        isLogin:state.auth.isLogin
     }
 };
 
 const mapDispatchToProps = (dispatch, state) => {
     return {
         onSubmit: (values) => {
-            console.log(values);
-            // dispatch(postMessage(values));
+            dispatch(loginAuthPost(values));
         }
     }
 };
