@@ -87,58 +87,58 @@ class TeacherviewController < ApplicationController
   
     render json: @test
   end
-    
+
   def syusseki
     count0 = 0
     count1 = 0
-    y = 1
-    while y < Attendance.count + 1
-    if @student_id.to_i == Attendance.find(y).student_id
+    y = Attendance.find_by(student_id: @student_id).id
+    if y != nil
+      while @student_id.to_i == Attendance.find(y).student_id
         data = Attendance.find(y)
-      
-      if data.period1 == 0 || data.period1 == 3 || data.period1 == 5
-        count0 += 1
-        count1 += 1
-      elsif data.period1 ==1 || data.period1 == 2 || data.period1 == 4
-        count1 += 1
-      end
-
-     if data.period2 == 0 || data.period2 == 3 || data.period2 == 5
-        count0 += 1
-        count1 += 1
-      elsif data.period2 ==1 || data.period2 == 2 || data.period2 == 4
-       count1 += 1
-     end
+        
+        if data.period1 == 0 || data.period1 == 3 || data.period1 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period1 ==1 || data.period1 == 2 || data.period1 == 4
+          count1 += 1
+        end
+        
+        if data.period2 == 0 || data.period2 == 3 || data.period2 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period2 ==1 || data.period2 == 2 || data.period2 == 4
+         count1 += 1
+        end
      
-    if data.period3 == 0 || data.period3 == 3 || data.period3 == 5
-       count0 += 1
-       count1 += 1
-     elsif data.period3 ==1 || data.period3 == 2 || data.period3 == 4
-      count1 += 1
-    end
+        if data.period3 == 0 || data.period3 == 3 || data.period3 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period3 ==1 || data.period3 == 2 || data.period3 == 4
+          count1 += 1
+        end
     
-    if data.period4 == 0 || data.period4 == 3 || data.period4 == 5
-      count0 += 1
-      count1 += 1
-    elsif data.period4 ==1 || data.period4 == 2 || data.period4 == 4
-      count1 += 1
-    end
+        if data.period4 == 0 || data.period4 == 3 || data.period4 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period4 ==1 || data.period4 == 2 || data.period4 == 4
+          count1 += 1
+        end
     
-    if data.period5 == 0 || data.period5 == 3 || data.period5 == 5
-      count0 += 1
-      count1 += 1
-    elsif data.period5 ==1 || data.period5 == 2 || data.period5 == 4
-      count1 += 1
+        if data.period5 == 0 || data.period5 == 3 || data.period5 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period5 ==1 || data.period5 == 2 || data.period5 == 4
+          count1 += 1
+        end
+      
+        y += 1
+      end
+      
+      if count0 == 0 || count1 == 0
+        return 0
+      else
+        return (count0.to_f / count1.to_f * 100).round(0)
+      end
     end
-    end 
-    y += 1
-    end
-   
-    if count0 == 0 || count1 == 0
-      return 0
-    else
-      return (count0.to_f / count1.to_f * 100).round(0)
-    end
-
   end
 end
