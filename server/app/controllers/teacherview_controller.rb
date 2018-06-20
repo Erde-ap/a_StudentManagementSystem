@@ -40,7 +40,7 @@ class TeacherviewController < ApplicationController
     if Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")) != nil
     @test = {'attendance_id' => User.find_by(student_id: @student_id).attendance_id,
               'name' => User.find_by(student_id: @student_id).name,
-              'syueekiritu' => syusseki,
+              'syueekiritu' => User.find_by(student_id: @student_id).syussekiritu,
               'student_id' => User.find_by(student_id: @student_id).student_id,
               'day1_period1' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period1,
               'day1_period2' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period2,
@@ -87,7 +87,7 @@ class TeacherviewController < ApplicationController
   
     render json: @test
   end
-
+=begin
   def syusseki
     count0 = 0
     count1 = 0
@@ -132,6 +132,9 @@ class TeacherviewController < ApplicationController
         end
       
         y += 1
+        if y >= Attendance.count
+          break
+        end
       end
       
       if count0 == 0 || count1 == 0
@@ -141,4 +144,5 @@ class TeacherviewController < ApplicationController
       end
     end
   end
+=end
 end
