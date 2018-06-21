@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 2018_06_04_015422) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.boolean "first_login", default: false
+    t.integer "syussekiritu", default: 0
   end
 
   create_table "views", force: :cascade do |t|

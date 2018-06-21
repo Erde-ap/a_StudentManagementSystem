@@ -21,7 +21,6 @@ let Header = ({isLogin,isLoginFunc}) => {
             <Nav className="ml-1" navbar>
                 <NavItem>
                     {isLoginFunc(isLogin)}
-                    <Link to="/">ホーム</Link>
                 </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
