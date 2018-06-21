@@ -6,5 +6,6 @@ class ChangenameToUser < ActiveRecord::Migration[5.2]
     add_column :requests, :period_start, :integer
     add_column :requests, :period_end, :integer
     add_column :users, :first_login, :boolean, default: false
+    add_column :users, :syussekiritu, :integer, default: 0
   end
 end
