@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import {connect} from "react-redux";
 
-const Auth = (props) => (props.isLogin ? props.children : <Redirect to='/'/>)
+const Auth = (props) => (props.isLogin ? props.children : <Redirect to='/'/>);
 
 const mapStateToProps = (state, ownProps) => {
     return {

@@ -10,8 +10,13 @@ export default function auth(state = initialState, action) {
         case 'LOGIN_AUTH':
             return {
                 ...state,
-                isLogin: action.data,
-                token:action.token.session
+                studentId:action.studentId,
+                serverMessage:action.message,
+                token:action.token,
+                name:action.name,
+                permission:action.permission,
+                isFirstLogin:action.isFirstLogin,
+                isLogin: action.state,
             };
         case 'FIRST_LOGIN':
             return {
@@ -27,3 +32,12 @@ export default function auth(state = initialState, action) {
             return state;
     }
 }
+
+
+
+// messageBody.message,
+//     messageBody.session,
+//     messageBody.name,
+//     messageBody.permission,
+//     messageBody.firstLogin,
+//     true

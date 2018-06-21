@@ -30,10 +30,6 @@ let FirstLogin = ({handleSubmit, onSubmit,isLogin}) => {
                     <Col lg={{size: 4, offset: 4}}>
                         <Input tag={Field} name="second_password" component="input"/>
                     </Col>
-                    <Label for="exampleDate" lg={{size: 4, offset: 4}}>学籍番号</Label>
-                    <Col lg={{size: 4, offset: 4}}>
-                        <Input tag={Field} name="student_id" component="input"/>
-                    </Col>
                 </FormGroup>
                 <FormGroup row className="mt-50">
                     <Col lg={{size: 4, offset: 4}}>
@@ -47,6 +43,7 @@ let FirstLogin = ({handleSubmit, onSubmit,isLogin}) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        initialValues: {...state.sendChange},
     }
 };
 
@@ -60,7 +57,8 @@ const mapDispatchToProps = (dispatch, state) => {
 
 
 FirstLogin= reduxForm({
-    form: 'login',
+    form: 'sendChangeState',
+    enableReinitialize: true,
 })(FirstLogin);
 
 FirstLogin = connect(

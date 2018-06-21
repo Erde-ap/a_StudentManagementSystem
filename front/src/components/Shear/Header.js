@@ -4,6 +4,7 @@ import {
     Navbar,
     NavbarBrand,
     NavItem,
+    NavLink,
     DropdownMenu,
     DropdownItem,
     DropdownToggle,
@@ -14,29 +15,35 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
 
-let Header = ({isLogin,isLoginFunc}) => {
+let Header = ({isLoginFunc, user}) => {
     return (
         <Navbar color="info" light expand="md" fixed="top">
             <NavbarBrand>KOBEDENSHI</NavbarBrand>
             <Nav className="ml-1" navbar>
                 <NavItem>
-                    {isLoginFunc(isLogin)}
-                    <Link to="/">ホーム</Link>
+                    {isLoginFunc(user.isLogin,user)}
                 </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
+                <NavItem>
+                    {
+                        user.name === undefined ? "" :
+                            <NavLink>{user.name}</NavLink>
+                    }
+                </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
-                        画面遷移
+                        メニュー
                     </DropdownToggle>
-                    <DropdownMenu right>
-                        <Link to="/student"><DropdownItem>生徒画面</DropdownItem></Link>
-                        <DropdownItem divider/>
-                        <Link to="/top"><DropdownItem>トップ</DropdownItem></Link>
-                        <Link to="/studentlist"><DropdownItem>生徒状況一覧</DropdownItem></Link>
-                        <Link to="/changelist"><DropdownItem>変更届け一覧</DropdownItem></Link>
-                        <Link to="/daychange"><DropdownItem>出席日の変更</DropdownItem></Link>
-                    </DropdownMenu>
+                        {
+                            user.isLogin ? user.permission === 0 ? <DropdownMenu right><Link to="/student"><DropdownItem>生徒画面</DropdownItem></Link></DropdownMenu>
+                                                  : <DropdownMenu right><Link to="/top"><DropdownItem>トップ</DropdownItem>
+                                                    </Link> < Link to="/studentlist"><DropdownItem>生徒状況一覧</DropdownItem></Link>
+                                                    <Link to="/changelist"><DropdownItem>変更届け一覧</DropdownItem></Link>
+                                                    <Link to="/daychange"><DropdownItem>出席日の変更</DropdownItem></Link>
+                                                    </DropdownMenu>
+                                : ""
+                        }
                 </UncontrolledDropdown>
             </Nav>
         </Navbar>
@@ -46,16 +53,18 @@ let Header = ({isLogin,isLoginFunc}) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLogin:state.auth.isLogin,
-        isLoginFunc: (loginState) =>  {
-            return loginState ? <Link to="/student">ホーム</Link> : <Link to="/">ホーム</Link>
+        user: state.auth,
+        isLoginFunc: (loginState,user) => {
+            return loginState ? user.permission === 0 ?
+                <Link to="/student">ホーム</Link> :
+                <Link to="/studentlist">ホーム</Link>
+                : <Link to="/">ホーム</Link>
         }
     }
 };
 
 const mapDispatchToProps = (dispatch, state) => {
-    return {
-    }
+    return {}
 };
 
 export default connect(

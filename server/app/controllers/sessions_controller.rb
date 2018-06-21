@@ -16,10 +16,25 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:password])
         # 一致していたらセッションにユーザー名を登録
         session[:access_token] = params[:name].hash
-        render json: {'session' => session[:access_token]}
+        @firstLogin = user.first_login
+        @permission = user.permission
+        @studentName = user.name
+        @studentId = user.student_id
+        render json: {
+            'message' => "ログイン成功",
+            'session' => session[:access_token],
+            'permission' => @permission,
+            'firstLogin' => @firstLogin,
+            'name' => @studentName,
+            'studentId' => @studentId
+        }
       else
         session[:access_token] = nil
-        render json: {'session' => session[:access_token]}
+        render json: {
+            'message' => "IDまたはパスワードが違います。",
+            'session' => session[:access_token],
+            'firstLogin' => false
+        }
       end
     end
   end

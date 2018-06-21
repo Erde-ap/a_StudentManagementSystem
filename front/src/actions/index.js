@@ -10,9 +10,10 @@ export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
 export const LOAD_INITIALISE = 'LOAD_INITIALISE';
 export const LOAD_CONDEL = 'LOAD_CONDEL';
 export const LOAD_ALREADY = 'LOAD_ALREADY';
+export const LOAD_FIRST_LOGIN_INITIALISE = 'LOAD_FIRST_LOGIN_INITIALISE';
 export const LOAD_STUDENTLIST = 'LOAD_STUDENTLIST';
 export const RESET_STUDENTLIST = 'RESET_STUDENTLIST';
-export const LOGIN_AUTH= 'LOGIN_AUTH';
+export const LOGIN_AUTH = 'LOGIN_AUTH';
 export const FIRST_LOGIN = 'FIRST_LOGIN';
 
 const axiosBase = axios;
@@ -63,6 +64,13 @@ export function loadInitializeState(data) {
     }
 }
 
+export function fistLoginInitializeState(data) {
+    return {
+        type: LOAD_FIRST_LOGIN_INITIALISE,
+        data: data
+    }
+}
+
 function addNewMessage() {
     return {
         type: ADD_MESSAGE,
@@ -104,17 +112,16 @@ function resetStudentList() {
 
 }
 
-function loginAuth(token,bool) {
+function loginAuth(studentId,message, token, name, permission, firstLogin, bool) {
     return {
         type: LOGIN_AUTH,
-        data: bool,
-        token:token
-    }
-}
-
-function firstLogin() {
-    return {
-        type: FIRST_LOGIN
+        studentId:studentId,
+        message: message,
+        token: token,
+        name:name,
+        permission:permission,
+        isFirstLogin: firstLogin,
+        state: bool,
     }
 }
 
@@ -256,30 +263,52 @@ export function loginAuthPost(messageBody) {
     return dispatch => {
         return api.post('selo', messageBody
         ).then((response) => {
-            console.log('送信成功');
-            console.log(response);
-            response.data.session === null ? dispatch(loginAuth(response.data,false)) : dispatch(loginAuth(response.data,true));
-            dispatch(checkFirstLogin(true))
+            console.log(response)
+            messageBody = response.data;
+            messageBody.session === null ?
+                //ID,passが違う時
+                dispatch(loginAuth(
+                    "",
+                    messageBody.message,
+                    messageBody.session,
+                    "",
+                    "",
+                    "",
+                    false,
+                    false
+                )) :
+                //成功時
+                dispatch(loginAuth(
+                    messageBody.studentId,
+                    messageBody.message,
+                    messageBody.session,
+                    messageBody.name,
+                    messageBody.permission,
+                    messageBody.firstLogin,
+                    true
+                ));
+            dispatch(checkFirstLogin(messageBody.firstLogin))
         }).catch((response) => {
             console.log('送信失敗');
-            dispatch(loginAuth('',false));
+            dispatch(loginAuth('送信に失敗しました。', '', false, false));
         })
     }
 }
 
 function checkFirstLogin(isFirst) {
     return dispatch => {
-        return isFirst ? dispatch(push('/first')) : dispatch(push('/student'))
+        return isFirst ? dispatch(push('/student')) : dispatch(push('/first'))
     }
 }
 
-export  function changePasswordPost(messageBody) {
+export function changePasswordPost(messageBody) {
     console.log(messageBody)
     return dispatch => {
         return api.post('passchange', messageBody
         ).then((response) => {
             console.log('送信成功');
             console.log(response);
+            dispatch(push('/student'))
         }).catch((response) => {
             console.log('送信失敗');
         })

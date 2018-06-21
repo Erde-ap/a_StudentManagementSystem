@@ -1,16 +1,23 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Container, Row, Col, FormGroup, Label, Input, Button} from 'reactstrap'
+import {Container, Row, Col, FormGroup, Label, Input, Button,Alert} from 'reactstrap'
 import {connect} from "react-redux";
-import {loginAuthPost}from'../../actions'
-import {Redirect} from  'react-router-dom';
+import {loginAuthPost, fistLoginInitializeState} from '../../actions'
+import {Redirect} from 'react-router-dom';
 
-let Login = ({handleSubmit, onSubmit,isLogin}) => {
-    return isLogin ? (<Redirect to='/student' />) : (
+let Login = ({handleSubmit, onSubmit, isLogin, serverMessage}) => {
+    return isLogin ? (<Redirect to='/student'/>) : (
         <Container>
             <Row className="mt-80">
                 <Col lg={{size: 4, offset: 4}}>
                     <h1 className="text-center">出席管理システム</h1>
+                </Col>
+            </Row>
+            <Row className="mt-30">
+                <Col lg={{size: 4, offset: 4}}>
+                    {
+                        serverMessage === "" ? "" :<Alert color="danger">{serverMessage}</Alert>
+                    }
                 </Col>
             </Row>
             <form onSubmit={handleSubmit}>
@@ -36,13 +43,16 @@ let Login = ({handleSubmit, onSubmit,isLogin}) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLogin:state.auth.isLogin
+        isLogin: state.auth.isLogin,
+        serverMessage: state.auth.serverMessage
     }
 };
 
 const mapDispatchToProps = (dispatch, state) => {
     return {
         onSubmit: (values) => {
+            console.log(values)
+            dispatch(fistLoginInitializeState(values.student_id));
             dispatch(loginAuthPost(values));
         }
     }
