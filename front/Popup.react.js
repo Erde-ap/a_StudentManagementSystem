@@ -1,3 +1,5 @@
+//node_modules/react-popup/dist 内に配置、置き換えてください
+
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
