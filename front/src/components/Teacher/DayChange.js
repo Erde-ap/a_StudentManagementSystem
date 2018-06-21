@@ -29,13 +29,15 @@ class DayChange extends Component{
             ]
         }
     }
+    changeRed(date){
+        this.setState({ events: this.state.events.concat([{title: '休日', date: date.format("YYYY-MM-DD"), rendering: 'background', color: '#ff9f89'}]) })
+    }
     render(){
         return(
             <Container>
                 <Row className="mt-100">
                     <Popup/>
                     <FullCalendar
-                        googleCalendarApiKey='AIzaSyApysSuJGEdzfD-OsYkD2TtCLGryDlqLjI'
                         id="calendar_id"
                         locale={'ja'}
                         header = {{
@@ -50,9 +52,9 @@ class DayChange extends Component{
                         events = {this.state.events}
                         selectable={true}
                         dayClick={(date) =>{
+                            //this.changeRed(date);
                             Popup.alert( <DayChangeForm date={date} />, "出席日の変更" )
                         } }
-
                     />
                 </Row>
             </Container>
