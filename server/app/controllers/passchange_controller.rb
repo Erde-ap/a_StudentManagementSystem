@@ -13,6 +13,8 @@ class PasschangeController < ApplicationController
          user.password = @password1
          user.save!
          @status = '変更完了しました'
+         user.first_login = true
+         user.save!
       else
          @status = 'パスワードは6文字以上10文字以内です'
       end

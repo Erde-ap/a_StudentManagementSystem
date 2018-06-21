@@ -21,9 +21,9 @@ csv2 = 0    #CSV更新時間を格納する
 number = 1
 
 every(1.second, 'period1.job') do   #1秒ごとにCSV更新時間を確認し更新されて入れば処理
-   CSV.foreach("/home/jaguar/Student.csv", headers: true) do |row|   #CSV読み込み
+   CSV.foreach("/home/ec2-user/environment/csv/Student.csv", headers: true) do |row|   #CSV読み込み
       #ファイル更新時間更新
-      file = File::stat("/home/jaguar/Student.csv")   #CSV更新時間読み込み
+      file = File::stat("/home/ec2-user/environment/csv/Student.csv")   #CSV更新時間読み込み
       csv2 = file.mtime    #↑を代入
       
       #ファイル更新確認
@@ -233,39 +233,94 @@ every(1.day, 'period6.job', at: '15:00') do
    time = Time.now
    year = time.strftime("%Y")
    month = time.strftime("%m")
+   count0 = 0
+   count1 = 0
    if month.index('0') == 0
       month = month.slice(1)
    end
-   day = time.strftime("%d")
+      day = time.strftime("%d")
    if day.index('0') == 0
       day = day.slice(1)
    end
    while number < User.count + 1
-   user = User.find_by(id: number)
-   if user.permission == 0
-   if user.state == true
-      user.state = false
+      user = User.find_by(id: number)
+      if user.permission == 0
+         if user.state == true
+            user.state = false
+            user.save!
+         end
+         schedules = Schedule.find_by(yyyy_mm_dd: time.strftime("%Y") + ',' + time.strftime("%m") + ',' + time.strftime("%d"))
+         attendance = Attendance.find_by(student_id: user.student_id, year: year, month: month, day: day)
+         if attendance.period1 == 8 && schedules.period1 == true
+            attendance.period1 = 0
+         end
+         if attendance.period2 == 8 && schedules.period2 == true
+            attendance.period2 = 0
+         end
+         if attendance.period3 == 8 && schedules.period3 == true
+            attendance.period3 = 0
+         end
+         if attendance.period4 == 8 && schedules.period4 == true
+            attendance.period4 = 0
+         end
+         if attendance.period5 == 8 && schedules.period5 == true
+            attendance.period5 = 0
+         end
+            attendance.save!
+      end
+      y = Attendance.find_by(student_id: user.student_id).id
+      if y != nil
+      while user.student_id == Attendance.find(y).student_id
+         data = Attendance.find(y)
+        
+         if data.period1 == 0 || data.period1 == 3 || data.period1 == 5
+             count0 += 1
+             count1 += 1
+         elsif data.period1 ==1 || data.period1 == 2 || data.period1 == 4
+             count1 += 1
+         end
+        
+         if data.period2 == 0 || data.period2 == 3 || data.period2 == 5
+             count0 += 1
+             count1 += 1
+         elsif data.period2 ==1 || data.period2 == 2 || data.period2 == 4
+            count1 += 1
+         end
+     
+         if data.period3 == 0 || data.period3 == 3 || data.period3 == 5
+            count0 += 1
+            count1 += 1
+         elsif data.period3 ==1 || data.period3 == 2 || data.period3 == 4
+            count1 += 1
+         end
+    
+         if data.period4 == 0 || data.period4 == 3 || data.period4 == 5
+            count0 += 1
+            count1 += 1
+         elsif data.period4 ==1 || data.period4 == 2 || data.period4 == 4
+            count1 += 1
+         end
+    
+         if data.period5 == 0 || data.period5 == 3 || data.period5 == 5
+            count0 += 1
+            count1 += 1
+         elsif data.period5 ==1 || data.period5 == 2 || data.period5 == 4
+            count1 += 1
+         end
+      
+         y += 1
+         if y >= Attendance.count
+          break
+         end
+      end
+      
+      if count0 == 0 || count1 == 0
+        user.syussekiritu =  0
+      else
+         user.syussekiritu = (count0.to_f / count1.to_f * 100).round(0)
+      end
       user.save!
-   end
-   schedules = Schedule.find_by(yyyy_mm_dd: time.strftime("%Y") + ',' + time.strftime("%m") + ',' + time.strftime("%d"))
-   attendance = Attendance.find_by(student_id: user.student_id, year: year, month: month, day: day)
-      if attendance.period1 == 8 && schedules.period1 == true
-         attendance.period1 = 0
       end
-      if attendance.period2 == 8 && schedules.period2 == true
-         attendance.period2 = 0
-      end
-      if attendance.period3 == 8 && schedules.period3 == true
-         attendance.period3 = 0
-      end
-      if attendance.period4 == 8 && schedules.period4 == true
-         attendance.period4 = 0
-      end
-      if attendance.period5 == 8 && schedules.period5 == true
-         attendance.period5 = 0
-      end
-         attendance.save!
-   end
-   number += 1
+      number += 1
    end
 end

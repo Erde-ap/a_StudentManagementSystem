@@ -40,7 +40,7 @@ class TeacherviewController < ApplicationController
     if Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")) != nil
     @test = {'attendance_id' => User.find_by(student_id: @student_id).attendance_id,
               'name' => User.find_by(student_id: @student_id).name,
-              'syueekiritu' => syusseki,
+              'syueekiritu' => User.find_by(student_id: @student_id).syussekiritu,
               'student_id' => User.find_by(student_id: @student_id).student_id,
               'day1_period1' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period1,
               'day1_period2' => Attendance.find_by(student_id: @student_id, year: date.strftime("%Y"), month: date.strftime("%m"), day: date.strftime("%d")).period2,
@@ -83,63 +83,66 @@ class TeacherviewController < ApplicationController
               'month5' =>(date+4).strftime("%m"),
               'day5' => (date+4).strftime("%d")
     }
-  end
+    end
   
     render json: @test
-    end
-    
+  end
+=begin
   def syusseki
     count0 = 0
     count1 = 0
-    y = Attendance.find_by(student_id: @student_id.to_i).id
-    while @student_id.to_i == Attendance.find(y).student_id
+    y = Attendance.find_by(student_id: @student_id).id
+    if y != nil
+      while @student_id.to_i == Attendance.find(y).student_id
         data = Attendance.find(y)
+        
+        if data.period1 == 0 || data.period1 == 3 || data.period1 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period1 ==1 || data.period1 == 2 || data.period1 == 4
+          count1 += 1
+        end
+        
+        if data.period2 == 0 || data.period2 == 3 || data.period2 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period2 ==1 || data.period2 == 2 || data.period2 == 4
+         count1 += 1
+        end
+     
+        if data.period3 == 0 || data.period3 == 3 || data.period3 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period3 ==1 || data.period3 == 2 || data.period3 == 4
+          count1 += 1
+        end
+    
+        if data.period4 == 0 || data.period4 == 3 || data.period4 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period4 ==1 || data.period4 == 2 || data.period4 == 4
+          count1 += 1
+        end
+    
+        if data.period5 == 0 || data.period5 == 3 || data.period5 == 5
+          count0 += 1
+          count1 += 1
+        elsif data.period5 ==1 || data.period5 == 2 || data.period5 == 4
+          count1 += 1
+        end
       
-      if data.period1 == 0 || data.period1 == 3 || data.period1 == 5
-        count0 += 1
-        count1 += 1
-      elsif data.period1 != 9 || data.period1 != 8 
-        count1 += 1
+        y += 1
+        if y >= Attendance.count
+          break
+        end
       end
       
-     if data.period2 == 0 || data.period2 == 3 || data.period2 == 5
-        count0 += 1
-        count1 += 1
-      elsif data.period2 != 9 || data.period2 != 8 
-       count1 += 1
-     end
-     
-    if data.period3 == 0 || data.period3 == 3 || data.period3 == 5
-       count0 += 1
-       count1 += 1
-     elsif data.period3 != 9 || data.period3 != 8 
-      count1 += 1
-    end
-    
-    if data.period4 == 0 || data.period4 == 3 || data.period4 == 5
-      count0 += 1
-      count1 += 1
-    elsif data.period4 != 9 || data.period4 != 8 
-      count1 += 1
-    end
-    
-    if data.period5 == 0 || data.period5 == 3 || data.period5 == 5
-      count0 += 1
-      count1 += 1
-    elsif data.period5 != 9 || data.period5 != 8 
-      count1 += 1
-    end
-    
-    y += 1
-    if y > Attendance.count
-      break
-    end
-    end
-    
-    if count0 == 0 || count1 == 0
-      return 0
-    else
-      return (count0.to_f / count1.to_f * 100).round(0)
+      if count0 == 0 || count1 == 0
+        return 0
+      else
+        return (count0.to_f / count1.to_f * 100).round(0)
+      end
     end
   end
+=end
 end
