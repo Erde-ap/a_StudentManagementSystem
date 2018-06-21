@@ -13,9 +13,10 @@ import {
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import {logoutUser}from "../../actions"
 
 
-let Header = ({isLoginFunc, user}) => {
+let Header = ({isLoginFunc, user,logoutButton}) => {
     return (
         <Navbar color="info" light expand="md" fixed="top">
             <NavbarBrand>KOBEDENSHI</NavbarBrand>
@@ -36,11 +37,17 @@ let Header = ({isLoginFunc, user}) => {
                         メニュー
                     </DropdownToggle>
                         {
-                            user.isLogin ? user.permission === 0 ? <DropdownMenu right><Link to="/student"><DropdownItem>生徒画面</DropdownItem></Link></DropdownMenu>
+                            user.isLogin ? user.permission === 0 ?
+                                                    <DropdownMenu right>
+                                                        <Link to="/student"><DropdownItem>生徒画面</DropdownItem></Link>
+                                                        <DropdownItem onClick={logoutButton}>ログアウト</DropdownItem>
+                                                    </DropdownMenu>
+
                                                   : <DropdownMenu right><Link to="/top"><DropdownItem>トップ</DropdownItem>
                                                     </Link> < Link to="/studentlist"><DropdownItem>生徒状況一覧</DropdownItem></Link>
                                                     <Link to="/changelist"><DropdownItem>変更届け一覧</DropdownItem></Link>
                                                     <Link to="/daychange"><DropdownItem>出席日の変更</DropdownItem></Link>
+                                                    <DropdownItem onClick={logoutButton}>ログアウト</DropdownItem>
                                                     </DropdownMenu>
                                 : ""
                         }
@@ -64,7 +71,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, state) => {
-    return {}
+    return {
+        logoutButton: () => {
+            return dispatch(logoutUser());
+        }
+    }
 };
 
 export default connect(

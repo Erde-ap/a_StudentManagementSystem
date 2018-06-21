@@ -2,10 +2,10 @@ import React from 'react'
 import {Container, Row, Col, Table} from 'reactstrap'
 import DayTable from './DayTable'
 
-const StudentView = ({student,studentYear,onNextMonth,onPrevMonth}) => (
+const StudentView = ({student,studentYear,onNextMonth,onPrevMonth,user}) => (
     <Container>
         <Row className="mt-80">
-            <Col lg={12}><h3>飯塚大地さんの出席状況</h3></Col>
+            <Col lg={12}><h3>{user.name}さんの出席状況</h3></Col>
             <Col lg={12}>
                 <table className="table table-bordered">
                     <thead>
@@ -39,10 +39,10 @@ const StudentView = ({student,studentYear,onNextMonth,onPrevMonth}) => (
         <Row className="mt-30">
             <Col lg={{size:2}}><h3>{student[0].month}月</h3></Col>
             <Col lg={{size:1, offset:2}}>
-                <button type="button" className="btn-primary btn-lg" onClick={() =>onPrevMonth(student[0].month)}>＜</button>
+                <button type="button" className="btn-primary btn-lg" onClick={() =>onPrevMonth(student[0].month,user.studentId)}>＜</button>
             </Col>
             <Col lg={{size:1}}>
-                <button type="button" className="btn-primary btn-lg" onClick={() =>onNextMonth(student[0].month)}>＞</button>
+                <button type="button" className="btn-primary btn-lg" onClick={() =>onNextMonth(student[0].month,user.studentId)}>＞</button>
             </Col>
         </Row>
         <Row className="mt-30">

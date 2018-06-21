@@ -28,6 +28,17 @@ export default function auth(state = initialState, action) {
                 ...state,
                 serverMessage:action.data
             };
+        case 'LOGOUT':
+            return {
+                ...state,
+                studentId:"",
+                serverMessage:"",
+                token:"",
+                name:"",
+                permission:0,
+                isFirstLogin:false,
+                isLogin: false,
+            }
         default:
             return state;
     }

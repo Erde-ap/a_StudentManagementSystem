@@ -15,6 +15,7 @@ export const LOAD_STUDENTLIST = 'LOAD_STUDENTLIST';
 export const RESET_STUDENTLIST = 'RESET_STUDENTLIST';
 export const LOGIN_AUTH = 'LOGIN_AUTH';
 export const FIRST_LOGIN = 'FIRST_LOGIN';
+export const LOGOUT = 'LOGOUT';
 
 const axiosBase = axios;
 const api = axiosBase.create({
@@ -125,6 +126,19 @@ function loginAuth(studentId,message, token, name, permission, firstLogin, bool)
     }
 }
 
+function logoutUserAction() {
+    return {
+        type: LOGOUT
+    }
+}
+
+export function logoutUser() {
+    return dispatch => {
+        dispatch(logoutUserAction())
+        dispatch(push("/"))
+    }
+}
+
 
 //先生側生徒一覧画面を表示
 export function updateStudentList(week) {
@@ -215,10 +229,13 @@ export function fetchMonthState(month) {
 }
 
 // 月の更新
-export function onUpdateMonthState(month) {
+export function onUpdateMonthState(month,studentId) {
     return dispatch => {
         dispatch(requestMessageState());
-        return api.get(`test?student_id=1196500&month=${month}`).then((response) => {
+        console.log("action")
+        console.log(month)
+        console.log(studentId)
+        return api.get(`test?student_id=${studentId}&month=${month}`).then((response) => {
             dispatch(updateMonthState(response.data));
         }).catch((response) => {
             console.log(response)

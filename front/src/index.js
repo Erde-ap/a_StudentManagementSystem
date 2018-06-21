@@ -7,6 +7,7 @@ import {
     fetchMonthState,
     fetchCondel,
     fetchAlready,
+    fetchStudentList
 } from './actions/index'
 import thunk from 'redux-thunk';
 import reducers from './reducers'
@@ -43,11 +44,11 @@ ReactDOM.render(
 );
 
 //Storeの中身をサーバーから問い合わせ
-store.dispatch(fetchMonthState(6));
+store.dispatch(fetchMonthState("6","1196500"));
 store.dispatch(fetchYearState());
 store.dispatch(fetchCondel());
 store.dispatch(fetchAlready());
-// store.dispatch(fetchStudentList(0));
+store.dispatch(fetchStudentList(0));
 
 
 //Storeの中身をコンソールに表示

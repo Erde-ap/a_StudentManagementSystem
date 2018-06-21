@@ -8,7 +8,6 @@
 #User作成(先頭のみわかりやすく改行)
 # 2回目以降rails db:seedを行う場合は先にrails db:migrate:resetを行うこと
 
-User.create(student_id:100, attendance_id:100, password:'test', name:'飯塚大地', grade:4, classes:1, permission:0, state:false, first_login:false)
 User.create(student_id:1196501, attendance_id:2, password:'e7MdK3Lz', name:'有馬敏伸', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:95)
 User.create(student_id:1196502, attendance_id:3, password:'W9q8zLei', name:'依田孝子', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:96)
 User.create(student_id:1196503, attendance_id:4, password:'t8FZmAnH', name:'岩田莉子', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:93)
@@ -23,7 +22,7 @@ User.create(student_id:1196511, attendance_id:12, password:'Tu5aBVRi', name:'竹
 User.create(student_id:1196512, attendance_id:13, password:'dL24hCcJ', name:'徳田敏宏', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:98)
 User.create(student_id:1196513, attendance_id:14, password:'uX2H6get', name:'富永康子', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:95)
 User.create(student_id:1196514, attendance_id:15, password:'iD6AUz2X', name:'藤村千代', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:93)
-User.create(student_id:1196500, attendance_id:1, password:'kH96rQaz', name:'麻生達男', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:97)
+User.create(student_id:1196500, attendance_id:1, password:'1196500', name:'麻生達男', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:97)
 User.create(student_id:9900000, attendance_id:0, password:'r8FPkwev', name:'岡晋一', grade:0, classes:1, permission:2, state:false, first_login:false)
 User.create(student_id:9990000, attendance_id:0, password:'Pkgkme7e', name:'江口良一', grade:0, classes:1, permission:2, state:false, first_login:false)
 
