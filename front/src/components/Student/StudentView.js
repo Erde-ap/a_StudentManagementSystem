@@ -37,11 +37,11 @@ const StudentView = ({student,studentYear,onNextMonth,onPrevMonth}) => (
             </Col>
         </Row>
         <Row className="mt-30">
-            <Col lg={{size:2}}><h3>{student[0].month}月</h3></Col>
-            <Col lg={{size:1, offset:2}}>
+            <Col xs={4} sm={4} lg={{size:2}}><h3>{student[0].month}月</h3></Col>
+            <Col xs={2} sm={2} lg={{size:1, offset:2}}>
                 <button type="button" className="btn-primary btn-lg" onClick={() =>onPrevMonth(student[0].month)}>＜</button>
             </Col>
-            <Col lg={{size:1}}>
+            <Col xs={2} sm={2} lg={{size:1}}>
                 <button type="button" className="btn-primary btn-lg" onClick={() =>onNextMonth(student[0].month)}>＞</button>
             </Col>
         </Row>
