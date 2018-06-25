@@ -72,19 +72,19 @@ class UserattendanceController < ApplicationController
         if @a9 + @a8 >= 150
           @last1 = 0
         else
-          @last1 = @last
+          @last1 = @last /10
         end
       elsif @month == 2
         if @a9 + @a8 >= 140
           @last2 = 0
         else
-          @last2 = @last
+          @last2 = @last / 11
         end
       elsif @month == 3
         if @a9 + @a8 >= 155
           @last3 = 0
         else
-          @last3 = @last
+          @last3 = @last /12
         end
       elsif @month == 4
         if @a9 + @a8 >= 150
@@ -96,49 +96,49 @@ class UserattendanceController < ApplicationController
         if @a9 + @a8 >= 155
           @last5 = 0
         else
-          @last5 = @last
+          @last5 = @last / 2
         end
       elsif @month == 6
         if @a9 + @a8 >= 150
           @last6 = 0
         else
-          @last6 = @last
+          @last6 = @last / 3
         end
       elsif @month == 7
         if @a9 + @a8 >= 155
           @last7 = 0
         else
-          @last7 = @last
+          @last7 = @last / 4
         end
       elsif @month == 8
         if @a9 + @a8 >= 155
           @last8 = 0
         else
-          @last8 = @last
+          @last8 = @last / 5
         end
       elsif @month == 9
         if @a9 + @a8 >= 150
           @last9 = 0
         else
-          @last9 = @last
+          @last9 = @last / 6
         end
       elsif @month == 10
         if @a9 + @a8 >= 155
           @last10 = 0
         else
-          @last10 = @last
+          @last10 = @last / 7
         end
       elsif @month == 11
         if @a9 + @a8 >= 150
           @last11 = 0
         else
-          @last11 = @last
+          @last11 = @last / 8
         end
       elsif @month == 12
         if @a9 + @a8 >= 155
           @last12 = 0
         else
-          @last12 = @last
+          @last12 = @last /9
         end
       end
     end
