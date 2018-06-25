@@ -72,88 +72,110 @@ class UserattendanceController < ApplicationController
         if @a9 + @a8 >= 150
           @last1 = 0
         else
-          @last1 = @last /10
+          @last1 = @last + @last4 + @last5 + @last6 + @last7 + @last8 + @last9 + @last10 + @last11 + @last12
+          @last1 = @last1 / 9
         end
+
       elsif @month == 2
         if @a9 + @a8 >= 140
           @last2 = 0
         else
-          @last2 = @last / 11
+          @last2 = @last + @last4 + @last5 + @last6 + @last7 + @last8 + @last9 + @last10 + @last11 + @last12 + @last1
+          @last2 = @last2 / 10
         end
+
       elsif @month == 3
         if @a9 + @a8 >= 155
           @last3 = 0
         else
-          @last3 = @last /12
+          @last3 = @last + @last4 + @last5 + @last6 + @last7 + @last8 + @last9 + @last10 + @last11 + @last12 + @last1 + @last2
+          @last3 = @last3 / 11
         end
+
       elsif @month == 4
         if @a9 + @a8 >= 150
           @last4 = 0
         else
           @last4 = @last
         end
+
       elsif @month == 5
         if @a9 + @a8 >= 155
           @last5 = 0
         else
-          @last5 = @last / 2
+          @last5 = @last + @last4
+          @last5 = @last5 / 2
         end
+
       elsif @month == 6
         if @a9 + @a8 >= 150
           @last6 = 0
         else
-          @last6 = @last / 3
+          @last6 = @last + @last4 + @last5
+          @last6 = @last6 / 3
         end
+
       elsif @month == 7
         if @a9 + @a8 >= 155
           @last7 = 0
         else
-          @last7 = @last / 4
+          @last7 = @last + @last4 + @last5 + @last6
+          @last7 = @last7 / 4
         end
+
       elsif @month == 8
         if @a9 + @a8 >= 155
           @last8 = 0
         else
-          @last8 = @last / 5
+          @last8 = @last + @last4 + @last5 + @last6 + @last7
+          @last8 = @last8 / 5
         end
+
       elsif @month == 9
         if @a9 + @a8 >= 150
           @last9 = 0
         else
-          @last9 = @last / 6
+          @last9 = @last + @last4 + @last5 + @last6 + @last7 + @last8
+          @last9 = @last9 / 6
         end
+
       elsif @month == 10
         if @a9 + @a8 >= 155
           @last10 = 0
         else
-          @last10 = @last / 7
+          @last10 = @last + @last4 + @last5 + @last6 + @last7 + @last8 + @last9
+          @last10 = @last10 / 6
         end
+
       elsif @month == 11
         if @a9 + @a8 >= 150
           @last11 = 0
         else
-          @last11 = @last / 8
+          @last11 = @last + @last4 + @last5 + @last6 + @last7 + @last8 + @last9 + @last10
+          @last11 = @last11 / 7
         end
+
       elsif @month == 12
         if @a9 + @a8 >= 155
           @last12 = 0
         else
-          @last12 = @last /9
+          @last12 = @last + @last4 + @last5 + @last6 + @last7 + @last8 + @last9 + @last10 + @last11
+          @last12 = @last12 / 8
         end
       end
     end
-    personal = { 'Apr' => @last4.to_int / 1,
-                 'May' => @last5.to_int / 2,
-                 'Jun' => @last6.to_int / 3,
-                 'Jul' => @last7.to_int / 4,
-                 'Aug' => @last8.to_int / 5,
-                 'Sep' => @last9.to_int / 6,
-                 'Oct' => @last10.to_int / 7,
-                 'Nov' => @last11.to_int / 8,
-                 'Dec' => @last12.to_int / 9,
-                 'Jan' => @last1.to_int / 10,
-                 'Feb' =>@last2.to_int / 11,
-                 'Mar' => @last3.to_int / 12,
+    personal = { 'Apr' => @last4.to_int,
+                 'May' => @last5.to_int,
+                 'Jun' => @last6.to_int,
+                 'Jul' => @last7.to_int,
+                 'Aug' => @last8.to_int,
+                 'Sep' => @last9.to_int,
+                 'Oct' => @last10.to_int,
+                 'Nov' => @last11.to_int,
+                 'Dec' => @last12.to_int,
+                 'Jan' => @last1.to_int,
+                 'Feb' =>@last2.to_int,
+                 'Mar' => @last3.to_int,
     }
     render json: personal
   end
