@@ -142,18 +142,18 @@ class UserattendanceController < ApplicationController
         end
       end
     end
-    personal = { 'Apr' => @last4.to_int,
-                 'May' => @last5.to_int,
-                 'Jun' => @last6.to_int,
-                 'Jul' => @last7.to_int,
-                 'Aug' => @last8.to_int,
-                 'Sep' => @last9.to_int,
-                 'Oct' => @last10.to_int,
-                 'Nov' => @last11.to_int,
-                 'Dec' => @last12.to_int,
-                 'Jan' => @last1.to_int,
-                 'Feb' =>@last2.to_int,
-                 'Mar' => @last3.to_int,
+    personal = { 'Apr' => @last4.to_int / 1,
+                 'May' => @last5.to_int / 2,
+                 'Jun' => @last6.to_int / 3,
+                 'Jul' => @last7.to_int / 4,
+                 'Aug' => @last8.to_int / 5,
+                 'Sep' => @last9.to_int / 6,
+                 'Oct' => @last10.to_int / 7,
+                 'Nov' => @last11.to_int / 8,
+                 'Dec' => @last12.to_int / 9,
+                 'Jan' => @last1.to_int / 10,
+                 'Feb' =>@last2.to_int / 11,
+                 'Mar' => @last3.to_int / 12,
     }
     render json: personal
   end
