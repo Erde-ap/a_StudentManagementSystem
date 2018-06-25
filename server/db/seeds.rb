@@ -23,7 +23,7 @@ User.create(student_id:1196512, attendance_id:13, password:'dL24hCcJ', name:'徳
 User.create(student_id:1196513, attendance_id:14, password:'uX2H6get', name:'富永康子', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:95)
 User.create(student_id:1196514, attendance_id:15, password:'iD6AUz2X', name:'藤村千代', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:93)
 User.create(student_id:1196500, attendance_id:1, password:'1196500', name:'麻生達男', grade:4, classes:1, permission:0, state:false, first_login:false, syussekiritu:97)
-User.create(student_id:9900000, attendance_id:0, password:'r8FPkwev', name:'岡晋一', grade:0, classes:1, permission:2, state:false, first_login:false)
+User.create(student_id:9900000, attendance_id:0, password:'9900000', name:'岡晋一', grade:0, classes:1, permission:2, state:false, first_login:false)
 User.create(student_id:9990000, attendance_id:0, password:'Pkgkme7e', name:'江口良一', grade:0, classes:1, permission:2, state:false, first_login:false)
 
 # request作成(先頭のみわかりやすく改行)

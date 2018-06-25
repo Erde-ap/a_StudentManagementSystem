@@ -28,7 +28,7 @@ let Login = ({handleSubmit, onSubmit, isLogin, serverMessage}) => {
                     </Col>
                     <Label for="exampleDate" lg={{size: 4, offset: 4}}>パスワード</Label>
                     <Col lg={{size: 4, offset: 4}}>
-                        <Input tag={Field} name="password" component="input"/>
+                        <Input tag={Field} name="password" type="password" component="input"/>
                     </Col>
                 </FormGroup>
                 <FormGroup row className="mt-50">
