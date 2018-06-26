@@ -5,8 +5,8 @@ import {connect} from "react-redux";
 import {loginAuthPost, fistLoginInitializeState} from '../../actions'
 import {Redirect} from 'react-router-dom';
 
-let Login = ({handleSubmit, onSubmit, isLogin, serverMessage}) => {
-    return isLogin ? (<Redirect to='/student'/>) : (
+let Login = ({handleSubmit, onSubmit, isLogin, serverMessage,permission}) => {
+    return isLogin ? permission === 0 ? (<Redirect to='/student'/>) : (<Redirect to='/studentlist'/>) : (
         <Container>
             <Row className="mt-80">
                 <Col lg={{size: 4, offset: 4}}>
@@ -44,6 +44,7 @@ let Login = ({handleSubmit, onSubmit, isLogin, serverMessage}) => {
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.auth.isLogin,
+        permission: state.auth.permission,
         serverMessage: state.auth.serverMessage
     }
 };
@@ -51,7 +52,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, state) => {
     return {
         onSubmit: (values) => {
-            console.log(values)
+            console.log(values);
             dispatch(fistLoginInitializeState(values.student_id));
             dispatch(loginAuthPost(values));
         }

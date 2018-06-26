@@ -314,7 +314,7 @@ export function loginAuthPost(messageBody) {
 
 function checkFirstLogin(isFirst) {
     return dispatch => {
-        return isFirst ? dispatch(push('/student')) : dispatch(push('/first'))
+        return isFirst ? dispatch(push('/')) : dispatch(push('/first'))
     }
 }
 
@@ -325,7 +325,7 @@ export function changePasswordPost(messageBody) {
         ).then((response) => {
             console.log('送信成功');
             console.log(response);
-            dispatch(push('/student'))
+            dispatch(push('/'))
         }).catch((response) => {
             console.log('送信失敗');
         })
